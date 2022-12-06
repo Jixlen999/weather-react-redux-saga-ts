@@ -1,0 +1,14 @@
+{
+  // Форматирование кода с помощью prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Форматирование при сохранении файла
+  "editor.formatOnSave": true,
+
+  // Использование одной темы в проекте
+  "workbench.colorTheme": "One Dark Pro",
+
+  // Шрифт Fira code
+  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true
+}
