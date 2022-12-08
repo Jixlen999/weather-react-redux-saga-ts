@@ -11,7 +11,6 @@ async function fetchLocation(): Promise<string> {
 
 function* locationWorker() {
   const location: ReturnType<typeof fetchLocation> = yield call(fetchLocation);
-
   yield put({
     type: GET_LOCATION_SUCCESS,
     location,

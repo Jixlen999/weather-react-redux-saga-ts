@@ -1,13 +1,16 @@
 import React from 'react';
 import LocationInput from '@components/LocationInput';
 import Main from '@components/Main';
+import AppWrapper from './styled';
+import GoogleLoginBtn from '../GoogleLoginBtn';
 
 function App() {
   return (
-    <div>
+    <AppWrapper>
       <LocationInput />
       <Main />
-    </div>
+      <GoogleLoginBtn />
+    </AppWrapper>
   );
 }
 

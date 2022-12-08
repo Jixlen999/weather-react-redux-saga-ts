@@ -1,7 +1,13 @@
 import React from 'react';
+import Moment from 'react-moment';
+import Wrapper from './styled';
 
 function Main() {
-  return <div>Main</div>;
+  return (
+    <Wrapper>
+      <Moment format="HH:mm" />
+    </Wrapper>
+  );
 }
 
 export default Main;
