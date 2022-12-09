@@ -13,8 +13,8 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "linebreak-style": ["error", "windows"],
-    "import/no-extraneous-dependencies": "off"
-    // "@typescript-eslint/default-param-last": "off"
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/default-param-last": "off"
   },
   "settings": {
     "import/resolver": {

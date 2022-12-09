@@ -6,6 +6,12 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing:border-box;
         font-family: 'Open Sans', sans-serif; 
+        font-size: 16px;
+    }
+    body {
+        width: 100vw;
+        height:100vh;
+        overflow: hidden;
     }
  `;
 
