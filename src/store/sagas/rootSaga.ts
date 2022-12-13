@@ -1,8 +1,9 @@
 import { fork } from 'redux-saga/effects';
 import locationSaga from './locationSaga';
+import inputLocationSaga from './inputLocationSaga';
 
 export default function* rootSaga() {
   yield fork(locationSaga);
-  // yield fork(saga2)
+  yield fork(inputLocationSaga);
   // yield fork(saga3)
 }

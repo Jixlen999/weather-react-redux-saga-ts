@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentLocation } from '@store/actions/locationActions';
+import { getCurrentLocation, setInputLocation } from '@store/actions/locationActions';
 import { RootState } from '@store/reducers/rootReducer';
 
 function LocationInput() {
@@ -16,10 +16,18 @@ function LocationInput() {
     dispatch(getCurrentLocation());
     setLocation(curLocation);
   }, [curLocation, dispatch]);
+
+  const clickHandler = () => {
+    dispatch(setInputLocation(location));
+    console.log(curLocation);
+  };
+
   return (
     <div>
       <input placeholder="Enter the city" value={location} onChange={changeHandler} />
-      <button type="submit">ok</button>
+      <button type="submit" onClick={clickHandler}>
+        ok
+      </button>
     </div>
   );
 }

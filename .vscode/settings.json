@@ -10,5 +10,6 @@
 
   // Шрифт Fira code
   "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "cSpell.words": ["gapi"]
 }

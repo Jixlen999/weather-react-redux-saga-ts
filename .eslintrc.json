@@ -14,7 +14,9 @@
   "rules": {
     "linebreak-style": ["error", "windows"],
     "import/no-extraneous-dependencies": "off",
-    "@typescript-eslint/default-param-last": "off"
+    "@typescript-eslint/default-param-last": "off",
+    "react/button-has-type": "off",
+    "no-plusplus": "off"
   },
   "settings": {
     "import/resolver": {
