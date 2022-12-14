@@ -11,7 +11,6 @@ function GoogleLoginBtn() {
 
   const loginClick = () => {
     dispatch(signIn());
-    console.log(eves);
     setEvents(eves);
   };
 

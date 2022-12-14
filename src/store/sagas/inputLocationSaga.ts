@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import { GET_LOCATION_SUCCESS, SET_INPUT_LOCATION } from '../actions/locationActions';
 
 function* inputLocationWorker(action: any) {
@@ -12,10 +12,8 @@ function* inputLocationWorker(action: any) {
   });
 }
 
-function* inputLocationSaga() {
-  console.log('here');
-
-  yield takeLatest(SET_INPUT_LOCATION, inputLocationWorker);
+function* inputLocationWatcher() {
+  yield takeEvery(SET_INPUT_LOCATION, inputLocationWorker);
 }
 
-export default inputLocationSaga;
+export default inputLocationWatcher;

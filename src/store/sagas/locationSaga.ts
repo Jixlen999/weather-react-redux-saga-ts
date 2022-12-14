@@ -17,8 +17,8 @@ function* locationWorker() {
   });
 }
 
-function* locationSaga() {
+function* locationWatcher() {
   yield takeLatest(GET_CURRENT_LOCATION, locationWorker);
 }
 
-export default locationSaga;
+export default locationWatcher;
