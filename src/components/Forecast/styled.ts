@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   opacity: 0.9;
   color: white;
   display: flex;
+  z-index: 0;
 `;
 
 export const WeatherNow = styled.div`

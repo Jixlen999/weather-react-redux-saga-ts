@@ -11,7 +11,7 @@ function CurrentDate() {
 
   return (
     <Wrapper>
-      <Moment format="HH:mm DAY MMMM D YYYY" />
+      <Moment format="HH:mm" />
       <Day>{date}</Day>
     </Wrapper>
   );
