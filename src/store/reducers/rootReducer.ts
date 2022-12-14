@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import calendarReducer from './calendarReducer';
+import eventsReducer from './eventsReducer';
 import locationReducer from './locationReducer';
 
 const rootReducer = combineReducers({
   location: locationReducer,
-  calendar: calendarReducer,
+  events: eventsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
