@@ -9,6 +9,7 @@ export const Input = styled.input`
   border-radius: 4px;
   padding: 12px 20px;
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export const Btn = styled.button`
@@ -19,11 +20,13 @@ export const Btn = styled.button`
   color: white;
   border: none;
   border-bottom: 5px solid white;
+  border-top: 5px solid white;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   &:hover {
-    transform: scale(1.1);
+    background: rgba(40, 44, 52, 1);
   }
 `;
 

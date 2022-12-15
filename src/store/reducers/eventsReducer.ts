@@ -7,6 +7,7 @@ interface IState {
 const InitialState: IState = {
   events: [],
 };
+
 interface IAction {
   type: string;
   events: any[];

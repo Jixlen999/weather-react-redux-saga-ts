@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { RootState } from '@store/reducers/rootReducer';
-import { Wrapper, WeatherNow, FutureWeather, Day, Temp, Icon, TempWrapper } from './styled';
+import { Wrapper, WeatherNow, FutureWeather, Day, Temp, Icon, TempWrapper, Switchers } from './styled';
 import DailyWeather from '../DailyWeather';
+import ForecastServiceSwitcher from '../ForecastServiceSwitcher';
 
 interface IWeather {
   temp: number;
@@ -45,6 +46,9 @@ function Forecast() {
       <FutureWeather>
         <DailyWeather />
       </FutureWeather>
+      <Switchers>
+        <ForecastServiceSwitcher />
+      </Switchers>
     </Wrapper>
   );
 }

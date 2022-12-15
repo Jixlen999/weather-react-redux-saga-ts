@@ -18,11 +18,11 @@ export const WeatherNow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 30%;
+  width: 20%;
   height: 100%;
 `;
 export const FutureWeather = styled.div`
-  width: 70%;
+  width: 60%;
 `;
 
 export const Day = styled.h3`
@@ -30,6 +30,7 @@ export const Day = styled.h3`
   text-transform: uppercase;
   background-color: #21252b;
   border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 export const Temp = styled.p`
   font-size: 60px;
@@ -42,4 +43,8 @@ export const TempWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const Switchers = styled.div`
+  width: 10%;
 `;

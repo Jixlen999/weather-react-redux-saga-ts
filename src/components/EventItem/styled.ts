@@ -10,6 +10,7 @@ export const Time = styled.span`
   margin-right: 30px;
   background: rgba(40, 44, 52, 0.8);
   border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export const Summary = styled.span``;

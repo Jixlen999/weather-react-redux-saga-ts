@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 50px;
+  justify-content: space-between;
 `;
 
 export const Item = styled.div`
@@ -27,6 +28,7 @@ export const WeekDay = styled.p`
   text-transform: uppercase;
   background-color: #21252b;
   border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 export const Temperature = styled.p`
   font-size: 26px;

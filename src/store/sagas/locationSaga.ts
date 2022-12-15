@@ -6,7 +6,7 @@ async function fetchLocation() {
   const location = await axios
     .get('https://ipgeolocation.abstractapi.com/v1/?api_key=1af23530f57744fd82b5ee50622b261e')
     .then(({ data }) => data)
-    .then(({ city, country }) => ({ city, country }));
+    .then(({ city, country, latitude, longitude }) => ({ city, country, latitude, longitude }));
   return location;
 }
 

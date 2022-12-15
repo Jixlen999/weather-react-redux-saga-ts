@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   background: rgba(40, 44, 52, 0.8);
   padding: 10px;
   padding-top: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export const ButtonWrapper = styled.div`
