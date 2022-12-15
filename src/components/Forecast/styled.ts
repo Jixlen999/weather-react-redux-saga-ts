@@ -6,8 +6,7 @@ export const Wrapper = styled.div`
   padding: 50px;
   position: absolute;
   bottom: 0;
-  background-color: #313949;
-  opacity: 0.9;
+  background: rgba(40, 44, 52, 0.8);
   color: white;
   display: flex;
   z-index: 0;

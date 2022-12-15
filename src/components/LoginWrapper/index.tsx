@@ -1,10 +1,12 @@
 import React from 'react';
 import ApiCalendar from 'react-google-calendar-api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaGoogle, FaSignOutAlt } from 'react-icons/fa';
 import { MdEvent } from 'react-icons/md';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { RootState } from '@store/reducers/rootReducer';
 import config from '@src/constants/googleConfig';
 import { storeEvents, clearEvents } from '@src/store/actions/eventsActions';
 
@@ -12,6 +14,7 @@ import { Wrapper, ButtonWrapper } from './styled';
 
 function LoginWrapper() {
   const dispatch = useDispatch();
+  const eventsSelector = useSelector((store: RootState) => store.events.events);
 
   const apiCalendar = new ApiCalendar(config);
 
@@ -31,8 +34,8 @@ function LoginWrapper() {
   const showEvents = () => {
     if (!gapi.client.getToken()) {
       toast('You need to sign in before fetching events!');
-    } else {
-      apiCalendar.listUpcomingEvents(10).then(({ result }: any) => {
+    } else if (eventsSelector.length === 0) {
+      apiCalendar.listUpcomingEvents(3).then(({ result }: any) => {
         result.items.forEach((el: any) => {
           dispatch(storeEvents(el));
         });
@@ -46,16 +49,16 @@ function LoginWrapper() {
         <FaGoogle style={{ fontSize: '30px' }} />
         <p>Sign In</p>
       </ButtonWrapper>
-      <ButtonWrapper onClick={logoutClick}>
-        <FaSignOutAlt style={{ fontSize: '30px' }} />
-        <p>Sign Out</p>
-      </ButtonWrapper>
       <ButtonWrapper onClick={showEvents}>
         <MdEvent style={{ fontSize: '30px' }} />
         <p>Show Upcoming Events</p>
       </ButtonWrapper>
+      <ButtonWrapper onClick={logoutClick}>
+        <FaSignOutAlt style={{ fontSize: '30px' }} />
+        <p>Sign Out</p>
+      </ButtonWrapper>
       <ToastContainer
-        position="bottom-right"
+        position="bottom-left"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}

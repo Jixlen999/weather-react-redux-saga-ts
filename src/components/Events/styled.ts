@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding: 50px;
+  padding-left: 70px;
+  color: white;
 `;
 
 export default Wrapper;

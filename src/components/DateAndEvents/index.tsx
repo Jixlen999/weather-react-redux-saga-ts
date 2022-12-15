@@ -1,14 +1,13 @@
 import React from 'react';
-import CurrentDate from '../CurrentDate';
+import DateAndLocationWrapper from '../DateAndLocationWrapper';
 import Events from '../Events';
-import Wrapper from './styled';
 
 function DateAndEvents() {
   return (
-    <Wrapper>
-      <CurrentDate />
+    <>
+      <DateAndLocationWrapper />
       <Events />
-    </Wrapper>
+    </>
   );
 }
 

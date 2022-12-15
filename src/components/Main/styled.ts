@@ -4,9 +4,9 @@ const Wrapper = styled.div`
   position: relative;
   width: 80%;
   height: 80%;
-  background-image: url('https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/weather/rain/rain-and-umbrella.jpg');
+  background: url('https://images.wallpaperscraft.ru/image/single/gorod_vecher_snegopad_136478_1280x720.jpg') center
+    center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 16px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 `;
-
 export default Wrapper;

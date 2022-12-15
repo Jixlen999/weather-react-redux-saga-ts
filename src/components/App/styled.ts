@@ -7,7 +7,7 @@ const AppWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  background-image: url('https://cdn1.epicgames.com/ue/product/Screenshot/Image08-1920x1080-090c550343a8fe021ff5d56acfabf099.jpg?resize=1&w=1920');
+  background-image: url('https://img1.goodfon.ru/wallpaper/nbig/3/d6/vetka-zima-sneg-hvoya.jpg');
 `;
 
 export default AppWrapper;
