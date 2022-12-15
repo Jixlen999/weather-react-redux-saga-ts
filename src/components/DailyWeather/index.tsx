@@ -2,7 +2,7 @@ import { RootState } from '@src/store/reducers/rootReducer';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Wrapper from './styled';
+import { Wrapper, Item, Icon, WeekDay, Temperature } from './styled';
 
 function DailyWeather() {
   const { placeId } = useSelector((state: RootState) => state.location);
@@ -16,18 +16,19 @@ function DailyWeather() {
         .then(({ data }) => setWeather(data.daily.data.splice(1))); // Отрезаем текущий день, т.к. он показан в "TODAY"
     })();
   }, [placeId]);
+  console.log(weather);
+
   return (
     <Wrapper>
       {weather.map(({ day, all_day }) => {
         const { temperature, icon } = all_day;
         const weekDay = new Date(day).toString().slice(0, 3); // Отрезаем первые 3 символа, т.к. они представляют день недели
-
         return (
-          <div key={day}>
-            <p>{weekDay}</p>
-            <p>{temperature}</p>
-            <p>{icon}</p>
-          </div>
+          <Item key={day}>
+            <WeekDay>{weekDay}</WeekDay>
+            <Icon src={`https://www.meteosource.com/static/img/ico/weather/${icon}.svg`} alt="weather icon" />
+            <Temperature>{temperature}°</Temperature>
+          </Item>
         );
       })}
     </Wrapper>

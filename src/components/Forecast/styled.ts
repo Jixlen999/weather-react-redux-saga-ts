@@ -3,13 +3,15 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   width: 100%;
   height: 200px;
-  padding: 50px;
+  padding: 30px 70px;
   position: absolute;
   bottom: 0;
   background: rgba(40, 44, 52, 0.8);
   color: white;
   display: flex;
-  z-index: 0;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
 `;
 
 export const WeatherNow = styled.div`

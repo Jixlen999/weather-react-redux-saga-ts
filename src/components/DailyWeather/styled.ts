@@ -1,5 +1,33 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+`;
 
-export default Wrapper;
+export const Item = styled.div`
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const Icon = styled.img`
+  width: 70px;
+  height: 70px;
+`;
+
+export const WeekDay = styled.p`
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  background-color: #21252b;
+  border-radius: 15px;
+`;
+export const Temperature = styled.p`
+  font-size: 26px;
+`;

@@ -5,9 +5,12 @@ function EventItem({ event }: { event: any }) {
   const { summary, start } = event;
   const { dateTime } = start;
   const time = `${new Date(dateTime).getHours() + 12}:${new Date(dateTime).getMinutes()}`;
+  const weekDay = new Date(dateTime).toString().slice(0, 3);
   return (
     <Item>
-      <Time>{time}</Time>
+      <Time>
+        {time} ({weekDay})
+      </Time>
       <Summary>{summary}</Summary>
     </Item>
   );

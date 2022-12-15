@@ -7,7 +7,9 @@ const AppWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  background-image: url('https://w-dog.ru/wallpapers/1/7/466168578667069/solnechnoe-nebo-i-belye-oblaka.jpg');
+  background: url('https://w-dog.ru/wallpapers/1/7/466168578667069/solnechnoe-nebo-i-belye-oblaka.jpg') no-repeat fixed
+    center;
+  background-size: cover;
 `;
 
 export default AppWrapper;

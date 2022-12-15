@@ -17,5 +17,13 @@ export const Location = styled.div`
 `;
 
 export const Country = styled.h5`
+  font-size: 16px;
+  font-weight: 100;
   text-align: end;
+`;
+
+export const City = styled.h2`
+  font-size: 28px;
+  font-weight: 100;
+  text-align: start;
 `;
