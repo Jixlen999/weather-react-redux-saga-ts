@@ -21,7 +21,7 @@ export const Icon = styled.img`
   height: 70px;
 `;
 
-export const WeekDay = styled.p`
+export const WeekDayOrTime = styled.p`
   font-size: 14px;
   font-weight: 600;
   padding: 5px 10px;

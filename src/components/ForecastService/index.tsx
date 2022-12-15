@@ -4,9 +4,9 @@ import { RootState } from '@src/store/reducers/rootReducer';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Wrapper, Item, Icon, WeekDay, Temperature } from './styled';
+import { Wrapper, Item, Icon, WeekDayOrTime, Temperature } from './styled';
 
-function DailyWeather() {
+function ForecastService() {
   const { placeId, latitude, longitude } = useSelector((state: RootState) => state.location);
   const service = useSelector((state: RootState) => state.service.service);
 
@@ -27,7 +27,6 @@ function DailyWeather() {
         .then(({ data }) => data.list)
         .then((data) => setHourlyWeather(data.splice(1, 6)));
     })();
-    console.log(hourlyWeather);
   }, [latitude, longitude, placeId, service]);
 
   const formatTime = (unformattedTime: string) => {
@@ -43,14 +42,13 @@ function DailyWeather() {
           const weekDay = new Date(day).toString().slice(0, 3); // Отрезаем первые 3 символа, т.к. они представляют день недели
           return (
             <Item key={day}>
-              <WeekDay>{weekDay}</WeekDay>
+              <WeekDayOrTime>{weekDay}</WeekDayOrTime>
               <Icon src={`https://www.meteosource.com/static/img/ico/weather/${icon}.svg`} alt="weather icon" />
               <Temperature>{temperature}°</Temperature>
             </Item>
           );
         })}
       {service === 'hourly' &&
-        // Изменить данные
         hourlyWeather.map(({ dt_txt, main, weather }) => {
           const { temp } = main;
           const { icon } = weather[0];
@@ -58,7 +56,7 @@ function DailyWeather() {
 
           return (
             <Item>
-              <WeekDay>{time}</WeekDay>
+              <WeekDayOrTime>{time}</WeekDayOrTime>
               <Icon src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon" />
               <Temperature>{temp.toFixed(1)}°</Temperature>
             </Item>
@@ -68,4 +66,4 @@ function DailyWeather() {
   );
 }
 
-export default DailyWeather;
+export default ForecastService;

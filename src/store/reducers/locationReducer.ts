@@ -1,12 +1,21 @@
 import { GET_LOCATION_SUCCESS, SET_PLACE_ID } from '../actions/locationActions';
 
-const initialState = {
+interface IState {
+  city: string;
+  country: string;
+  placeId?: string;
+  latitude: number | null;
+  longitude: number | null;
+}
+
+const initialState: IState = {
   city: '',
   country: '',
   placeId: '',
   latitude: null,
   longitude: null,
 };
+
 interface IAction {
   type: string;
   location?: {
@@ -18,7 +27,7 @@ interface IAction {
   placeId?: '';
 }
 
-const locationReducer = (state: typeof initialState = initialState, action: IAction) => {
+const locationReducer = (state: IState = initialState, action: IAction) => {
   switch (action.type) {
     case GET_LOCATION_SUCCESS: {
       const { city, country, latitude, longitude } = action.location!;

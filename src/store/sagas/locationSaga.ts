@@ -2,8 +2,15 @@ import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { GET_CURRENT_LOCATION, GET_LOCATION_SUCCESS, setPlaceId } from '../actions/locationActions';
 
+interface ILocation {
+  city: string;
+  country: string;
+  latitude: number;
+  longitude: number;
+}
+
 async function fetchLocation() {
-  const location = await axios
+  const location: ILocation = await axios
     .get('https://ipgeolocation.abstractapi.com/v1/?api_key=1af23530f57744fd82b5ee50622b261e')
     .then(({ data }) => data)
     .then(({ city, country, latitude, longitude }) => ({ city, country, latitude, longitude }));
@@ -11,17 +18,18 @@ async function fetchLocation() {
 }
 
 // Fetching placeId for meteosource.com
-async function fetchPlaceID(curLocation: any): Promise<string> {
-  const { data } = await axios.get(
-    `https://www.meteosource.com/api/v1/free/find_places_prefix?text=${curLocation}&language=en&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
-  );
-  return data[0].place_id;
+async function fetchPlaceID(curLocation: string): Promise<string> {
+  const placeId: string = await axios
+    .get(
+      `https://www.meteosource.com/api/v1/free/find_places_prefix?text=${curLocation}&language=en&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
+    )
+    .then(({ data }) => data[0].place_id);
+  return placeId;
 }
 
 function* locationWorker() {
-  const location: ReturnType<typeof fetchLocation> = yield call(fetchLocation);
-  // @ts-ignore
-  const placeId: ReturnType<typeof fetchPlaceID> = yield call(fetchPlaceID, location.city);
+  const location: ILocation = yield call(fetchLocation);
+  const placeId: string = yield call(fetchPlaceID, location.city);
 
   yield put({
     type: GET_LOCATION_SUCCESS,

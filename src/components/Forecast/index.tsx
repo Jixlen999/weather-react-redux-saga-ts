@@ -1,51 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@store/reducers/rootReducer';
-import { Wrapper, WeatherNow, FutureWeather, Day, Temp, Icon, TempWrapper, Switchers } from './styled';
-import DailyWeather from '../DailyWeather';
+import { getCurrentWeather } from '@src/store/actions/weatherActions';
+import ForecastService from '../ForecastService';
 import ForecastServiceSwitcher from '../ForecastServiceSwitcher';
 
-interface IWeather {
-  temp: number;
-  icon: string;
-}
+import { Wrapper, WeatherNow, FutureWeatherWrapper, Day, Temp, Icon, TempWrapper, Switchers } from './styled';
 
 function Forecast() {
-  const { city, placeId } = useSelector((state: RootState) => state.location);
-  const [curWeather, setCurWeather] = useState<IWeather>();
+  const dispatch = useDispatch();
+  const { city } = useSelector((state: RootState) => state.location);
+  const { icon, temperature } = useSelector((state: RootState) => state.weather.currentWeather);
 
   useEffect(() => {
     (async () => {
       if (city) {
-        await axios
-          .get(
-            `https://www.meteosource.com/api/v1/free/point?place_id=${placeId}&sections=current&language=en&units=auto&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
-          )
-          .then(({ data }) => data.current)
-          .then((current) => {
-            const { icon_num, temperature } = current;
-            setCurWeather({
-              temp: temperature,
-              icon: `https://www.meteosource.com/static/img/ico/weather/${icon_num}.svg`,
-            });
-          });
+        dispatch(getCurrentWeather());
       }
     })();
-  }, [city, placeId]);
+  }, [city, dispatch]);
 
   return (
     <Wrapper>
       <WeatherNow>
-        <Icon src={curWeather?.icon} alt="weather icon" />
+        <Icon src={`https://www.meteosource.com/static/img/ico/weather/${icon}.svg`} alt="weather icon" />
         <TempWrapper>
           <Day>Today</Day>
-          <Temp>{curWeather?.temp}°</Temp>
+          <Temp>{temperature}°</Temp>
         </TempWrapper>
       </WeatherNow>
-      <FutureWeather>
-        <DailyWeather />
-      </FutureWeather>
+      <FutureWeatherWrapper>
+        <ForecastService />
+      </FutureWeatherWrapper>
       <Switchers>
         <ForecastServiceSwitcher />
       </Switchers>

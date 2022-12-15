@@ -21,7 +21,7 @@ export const WeatherNow = styled.div`
   width: 20%;
   height: 100%;
 `;
-export const FutureWeather = styled.div`
+export const FutureWeatherWrapper = styled.div`
   width: 60%;
 `;
 
