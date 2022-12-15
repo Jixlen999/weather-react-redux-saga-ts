@@ -7,7 +7,7 @@ const AppWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  background-image: url('https://img1.goodfon.ru/wallpaper/nbig/3/d6/vetka-zima-sneg-hvoya.jpg');
+  background-image: url('https://w-dog.ru/wallpapers/1/7/466168578667069/solnechnoe-nebo-i-belye-oblaka.jpg');
 `;
 
 export default AppWrapper;

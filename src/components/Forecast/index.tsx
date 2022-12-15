@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { RootState } from '@store/reducers/rootReducer';
 import { Wrapper, WeatherNow, FutureWeather, Day, Temp, Icon, TempWrapper } from './styled';
+import DailyWeather from '../DailyWeather';
 
 interface IWeather {
   temp: number;
@@ -17,21 +18,6 @@ function Forecast() {
   const [curWeather, setCurWeather] = useState<IWeather>();
 
   useEffect(() => {
-    // (async function () {
-    //   if (curLocation) {
-    //     await axios
-    //       .get(
-    //         `https://api.openweathermap.org/data/2.5/weather?q=${curLocation}&units=metric&appid=d47aaf5a7ca8357e87b2d06f96316705`,
-    //       )
-    //       .then(({ data }) => {
-    //         const { weather, main } = data;
-    //         setCurWeather({
-    //           temp: Math.round(main.temp),
-    //           icon: `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
-    //         });
-    //       });
-    //   }
-    // })();
     (async function () {
       if (curLocation) {
         const placeId = await axios
@@ -41,7 +27,7 @@ function Forecast() {
           .then(({ data }) => data[0].place_id);
         const weather = await axios
           .get(
-            `https://www.meteosource.com/api/v1/free/point?place_id=${placeId}&sections=current%2Cdaily&language=en&units=auto&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
+            `https://www.meteosource.com/api/v1/free/point?place_id=${placeId}&sections=current&language=en&units=auto&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
           )
           .then(({ data }) => data.current)
           .then((current) => {
@@ -64,7 +50,9 @@ function Forecast() {
           <Temp>{curWeather?.temp}°</Temp>
         </TempWrapper>
       </WeatherNow>
-      <FutureWeather>forecast</FutureWeather>
+      <FutureWeather>
+        <DailyWeather />
+      </FutureWeather>
     </Wrapper>
   );
 }

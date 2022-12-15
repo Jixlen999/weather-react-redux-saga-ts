@@ -6,10 +6,10 @@ export const Item = styled.div`
 `;
 
 export const Time = styled.span`
-  padding: 3px 5px;
+  padding: 3px 7px;
   margin-right: 30px;
   background: rgba(40, 44, 52, 0.8);
-  border-radius: 4px;
+  border-radius: 15px;
 `;
 
 export const Summary = styled.span``;
