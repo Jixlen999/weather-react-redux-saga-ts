@@ -2,11 +2,12 @@ import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { GET_CURRENT_LOCATION, GET_LOCATION_SUCCESS, setPlaceId } from '../actions/locationActions';
 
-async function fetchLocation(): Promise<string> {
-  const { data } = await axios.get(
-    'https://ipgeolocation.abstractapi.com/v1/?api_key=1af23530f57744fd82b5ee50622b261e',
-  );
-  return data.city;
+async function fetchLocation() {
+  const location = await axios
+    .get('https://ipgeolocation.abstractapi.com/v1/?api_key=1af23530f57744fd82b5ee50622b261e')
+    .then(({ data }) => data)
+    .then(({ city, country }) => ({ city, country }));
+  return location;
 }
 
 // Fetching placeId for meteosource.com
@@ -19,7 +20,8 @@ async function fetchPlaceID(curLocation: any): Promise<string> {
 
 function* locationWorker() {
   const location: ReturnType<typeof fetchLocation> = yield call(fetchLocation);
-  const placeId: ReturnType<typeof fetchPlaceID> = yield call(fetchPlaceID, location);
+  // @ts-ignore
+  const placeId: ReturnType<typeof fetchPlaceID> = yield call(fetchPlaceID, location.city);
 
   yield put({
     type: GET_LOCATION_SUCCESS,

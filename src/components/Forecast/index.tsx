@@ -11,12 +11,12 @@ interface IWeather {
 }
 
 function Forecast() {
-  const { location, placeId } = useSelector((state: RootState) => state.location);
+  const { city, placeId } = useSelector((state: RootState) => state.location);
   const [curWeather, setCurWeather] = useState<IWeather>();
 
   useEffect(() => {
     (async () => {
-      if (location) {
+      if (city) {
         await axios
           .get(
             `https://www.meteosource.com/api/v1/free/point?place_id=${placeId}&sections=current&language=en&units=auto&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
@@ -31,7 +31,7 @@ function Forecast() {
           });
       }
     })();
-  }, [location, placeId]);
+  }, [city, placeId]);
 
   return (
     <Wrapper>

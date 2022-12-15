@@ -15,3 +15,7 @@ export const Location = styled.div`
     font-weight: 100;
   }
 `;
+
+export const Country = styled.h5`
+  text-align: end;
+`;

@@ -8,26 +8,26 @@ import { Input, Btn, Wrapper } from './styled';
 
 function LocationInput() {
   const dispatch = useDispatch<(arg: any) => any>();
-  const curLocation = useSelector((state: RootState) => state.location.location);
-  const [location, setLocation] = useState<string>('');
+  const { city, country } = useSelector((state: RootState) => state.location);
+  const [curCity, setCurCity] = useState<string>('');
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocation(e.target.value);
+    setCurCity(e.target.value);
   };
 
   useEffect(() => {
     dispatch(getCurrentLocation());
     dispatch(getPlaceId());
-    setLocation(curLocation);
-  }, [curLocation, dispatch]);
+    setCurCity(city);
+  }, [city, country, dispatch]);
 
   const clickHandler = () => {
-    dispatch(setInputLocation(location));
+    dispatch(setInputLocation(city));
   };
 
   return (
     <Wrapper>
-      <Input placeholder="Enter the city" value={location} onChange={changeHandler} />
+      <Input placeholder="Enter the city" value={curCity} onChange={changeHandler} />
       <Btn type="submit" onClick={clickHandler}>
         Enter
       </Btn>
