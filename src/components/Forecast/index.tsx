@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -14,18 +11,13 @@ interface IWeather {
 }
 
 function Forecast() {
-  const curLocation = useSelector((state: RootState) => state.location.location);
+  const { location, placeId } = useSelector((state: RootState) => state.location);
   const [curWeather, setCurWeather] = useState<IWeather>();
 
   useEffect(() => {
-    (async function () {
-      if (curLocation) {
-        const placeId = await axios
-          .get(
-            `https://www.meteosource.com/api/v1/free/find_places_prefix?text=${curLocation}&language=en&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
-          )
-          .then(({ data }) => data[0].place_id);
-        const weather = await axios
+    (async () => {
+      if (location) {
+        await axios
           .get(
             `https://www.meteosource.com/api/v1/free/point?place_id=${placeId}&sections=current&language=en&units=auto&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
           )
@@ -39,7 +31,7 @@ function Forecast() {
           });
       }
     })();
-  }, [curLocation]);
+  }, [location, placeId]);
 
   return (
     <Wrapper>

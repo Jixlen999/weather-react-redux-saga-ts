@@ -8,7 +8,7 @@ function DailyWeather() {
   const curLocation = useSelector((state: RootState) => state.location.location);
   const [weather, setWeather] = useState<any[]>([]);
   useEffect(() => {
-    (async function () {
+    (async () => {
       const placeId = await axios
         .get(
           `https://www.meteosource.com/api/v1/free/find_places_prefix?text=${curLocation}&language=en&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,

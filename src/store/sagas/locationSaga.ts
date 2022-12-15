@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { GET_CURRENT_LOCATION, GET_LOCATION_SUCCESS } from '../actions/locationActions';
+import { GET_CURRENT_LOCATION, GET_LOCATION_SUCCESS, setPlaceId } from '../actions/locationActions';
 
 async function fetchLocation(): Promise<string> {
   const { data } = await axios.get(
@@ -9,12 +9,23 @@ async function fetchLocation(): Promise<string> {
   return data.city;
 }
 
+// Fetching placeId for meteosource.com
+async function fetchPlaceID(curLocation: any): Promise<string> {
+  const { data } = await axios.get(
+    `https://www.meteosource.com/api/v1/free/find_places_prefix?text=${curLocation}&language=en&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
+  );
+  return data[0].place_id;
+}
+
 function* locationWorker() {
   const location: ReturnType<typeof fetchLocation> = yield call(fetchLocation);
+  const placeId: ReturnType<typeof fetchPlaceID> = yield call(fetchPlaceID, location);
+
   yield put({
     type: GET_LOCATION_SUCCESS,
     location,
   });
+  yield put(setPlaceId(placeId));
 }
 
 function* locationWatcher() {

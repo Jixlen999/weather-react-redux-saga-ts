@@ -1,8 +1,9 @@
 import React from 'react';
 import LocationInput from '@components/LocationInput';
 import Main from '@components/Main';
-import AppWrapper from './styled';
 import LoginWrapper from '../LoginWrapper';
+
+import AppWrapper from './styled';
 
 function App() {
   return (

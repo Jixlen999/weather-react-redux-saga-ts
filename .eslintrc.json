@@ -16,7 +16,8 @@
     "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/default-param-last": "off",
     "react/button-has-type": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "@typescript-eslint/naming-convention": "off"
   },
   "settings": {
     "import/resolver": {
