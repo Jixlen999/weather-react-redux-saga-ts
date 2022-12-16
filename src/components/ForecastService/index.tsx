@@ -1,9 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { RootState } from '@src/store/reducers/rootReducer';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+
+import { RootState } from '@src/store/reducers/rootReducer';
+import formatTime from '@src/utils/formatTime';
+
 import { Wrapper, Item, Icon, WeekDayOrTime, Temperature } from './styled';
 
 function ForecastService() {
@@ -28,11 +29,6 @@ function ForecastService() {
         .then((data) => setHourlyWeather(data.splice(1, 6)));
     })();
   }, [latitude, longitude, placeId, service]);
-
-  const formatTime = (unformattedTime: string) => {
-    const time = new Date(unformattedTime);
-    return [time.getHours(), time.getMinutes()].map((hrOrMin) => (hrOrMin < 10 ? `0${hrOrMin}` : hrOrMin)).join(':');
-  };
 
   return (
     <Wrapper>

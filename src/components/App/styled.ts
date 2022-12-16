@@ -7,8 +7,8 @@ const AppWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  background: url('https://w-dog.ru/wallpapers/1/7/466168578667069/solnechnoe-nebo-i-belye-oblaka.jpg') no-repeat fixed
-    center;
+  background: url('https://img.freepik.com/premium-photo/golden-wheat-field-sunset-beautiful-nature_416511-5716.jpg?w=2000')
+    no-repeat fixed center;
   background-size: cover;
 `;
 
