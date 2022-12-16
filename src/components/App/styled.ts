@@ -1,14 +1,18 @@
 import styled from 'styled-components';
+import chooseBgImage from '@src/utils/chooseImage';
 
-const AppWrapper = styled.div`
+interface IAppWrapper {
+  weatherSummary: string;
+}
+
+const AppWrapper = styled.div<IAppWrapper>`
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  background: url('https://images.unsplash.com/photo-1511836536898-6d6f1b8f6948?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VubnklMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')
-    no-repeat fixed center;
+  background: url(${({ weatherSummary }) => chooseBgImage(weatherSummary).bgImage}) no-repeat fixed center;
   background-size: cover;
 `;
 
