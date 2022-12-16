@@ -51,7 +51,7 @@ function LoginWrapper() {
       </ButtonWrapper>
       <ButtonWrapper onClick={showEvents}>
         <MdEvent style={{ fontSize: '30px' }} />
-        <p>Show Upcoming Events</p>
+        <p>Show Events</p>
       </ButtonWrapper>
       <ButtonWrapper onClick={logoutClick}>
         <FaSignOutAlt style={{ fontSize: '30px' }} />

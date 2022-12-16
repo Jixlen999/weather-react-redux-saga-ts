@@ -19,11 +19,9 @@ export const Btn = styled.div<IBtn>`
   font-size: 20px;
   display: inline-block;
   height: auto;
-  background: ${({ active }) => (active ? 'rgba(40, 44, 52, 1)' : 'rgba(40, 44, 52, 0.2)')};
+  background: ${({ active }) => (active ? 'rgba(40, 44, 52, 1)' : 'rgba(255, 255, 255, 0.1)')};
   color: white;
-  border: none;
-  border-left: 5px solid white;
-  border-right: 5px solid white;
+  border: 2px solid white;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;

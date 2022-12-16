@@ -22,7 +22,6 @@ export const ButtonWrapper = styled.div`
   cursor: pointer;
   transition: all 0.2s linear;
   &:hover {
-    transform: scale(1.2);
-    color: white;
+    transform: scale(1.1);
   }
 `;

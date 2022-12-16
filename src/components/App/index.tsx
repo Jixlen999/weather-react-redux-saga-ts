@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable-loop */
 import React from 'react';
 import { useSelector } from 'react-redux';
 

@@ -52,7 +52,6 @@ function* locationWorkerById() {
 
 function* locationWorkerByName({ cityName }: { cityName: string }) {
   const location: ILocation = yield call(fetchLocationByName, cityName);
-  console.log(location);
   const placeId: string = yield call(fetchPlaceID, location.city);
 
   yield put({
