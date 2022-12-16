@@ -7,7 +7,7 @@ const AppWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  background: url('https://img.freepik.com/premium-photo/golden-wheat-field-sunset-beautiful-nature_416511-5716.jpg?w=2000')
+  background: url('https://images.unsplash.com/photo-1511836536898-6d6f1b8f6948?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VubnklMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')
     no-repeat fixed center;
   background-size: cover;
 `;

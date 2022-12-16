@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentLocation, getPlaceId, setInputLocation } from '@store/actions/locationActions';
+import { getCurrentLocation, getPlaceId, getInputLocation } from '@store/actions/locationActions';
 import { RootState } from '@store/reducers/rootReducer';
 
 import { Input, Btn, Wrapper } from './styled';
@@ -22,7 +22,7 @@ function LocationInput() {
   }, [city, country, dispatch]);
 
   const clickHandler = () => {
-    dispatch(setInputLocation(city));
+    dispatch(getInputLocation(curCity));
   };
 
   return (

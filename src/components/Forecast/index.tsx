@@ -23,7 +23,7 @@ function Forecast() {
   return (
     <Wrapper>
       <WeatherNow>
-        <Icon src={`https://www.meteosource.com/static/img/ico/weather/${icon}.svg`} alt="weather icon" />
+        <Icon src={icon ? `https://www.meteosource.com/static/img/ico/weather/${icon}.svg` : ''} alt="weather icon" />
         <TempWrapper>
           <Day>Today</Day>
           <Temp>{temperature}°</Temp>

@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '@src/store/reducers/rootReducer';
@@ -8,53 +7,42 @@ import formatTime from '@src/utils/formatTime';
 import { Wrapper, Item, Icon, WeekDayOrTime, Temperature } from './styled';
 
 function ForecastService() {
-  const { placeId, latitude, longitude } = useSelector((state: RootState) => state.location);
+  const { dailyWeather, hourlyWeather } = useSelector((state: RootState) => state.weather);
   const service = useSelector((state: RootState) => state.service.service);
 
-  const [dailyWeather, setDailyWeather] = useState<any[]>([]);
-  const [hourlyWeather, setHourlyWeather] = useState<any[]>([]);
+  if (service === 'hourly') {
+    return (
+      <Wrapper>
+        {hourlyWeather &&
+          hourlyWeather &&
+          hourlyWeather.map(({ dt_txt, main, weather }: any) => {
+            const { temp } = main;
+            const { icon } = weather[0];
+            const time = formatTime(dt_txt);
 
-  useEffect(() => {
-    (async () => {
-      axios
-        .get(
-          `https://www.meteosource.com/api/v1/free/point?place_id=${placeId}&sections=daily&language=en&units=auto&key=y1n9nte06no9kr9lmnf4838aebtt2yu0hkwkisja`,
-        )
-        .then(({ data }) => setDailyWeather(data.daily.data.splice(1))); // Отрезаем текущий день, т.к. он показан в "TODAY"
-      await axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=d47aaf5a7ca8357e87b2d06f96316705`,
-        )
-        .then(({ data }) => data.list)
-        .then((data) => setHourlyWeather(data.splice(1, 6)));
-    })();
-  }, [latitude, longitude, placeId, service]);
+            return (
+              <Item key={time}>
+                <WeekDayOrTime>{time}</WeekDayOrTime>
+                <Icon src={icon && `http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon" />
+                <Temperature>{temp.toFixed(1)}°</Temperature>
+              </Item>
+            );
+          })}
+      </Wrapper>
+    );
+  }
 
   return (
     <Wrapper>
-      {service === 'daily' &&
-        dailyWeather.map(({ day, all_day }) => {
+      {dailyWeather &&
+        dailyWeather.map(({ day, all_day }: any) => {
           const { temperature, icon } = all_day;
           const weekDay = new Date(day).toString().slice(0, 3); // Отрезаем первые 3 символа, т.к. они представляют день недели
           return (
             <Item key={day}>
               <WeekDayOrTime>{weekDay}</WeekDayOrTime>
-              <Icon src={`https://www.meteosource.com/static/img/ico/weather/${icon}.svg`} alt="weather icon" />
+              <Icon src={icon && `https://www.meteosource.com/static/img/ico/weather/${icon}.svg`} alt="weather icon" />
               <Temperature>{temperature}°</Temperature>
-            </Item>
-          );
-        })}
-      {service === 'hourly' &&
-        hourlyWeather.map(({ dt_txt, main, weather }) => {
-          const { temp } = main;
-          const { icon } = weather[0];
-          const time = formatTime(dt_txt);
-
-          return (
-            <Item>
-              <WeekDayOrTime>{time}</WeekDayOrTime>
-              <Icon src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon" />
-              <Temperature>{temp.toFixed(1)}°</Temperature>
             </Item>
           );
         })}

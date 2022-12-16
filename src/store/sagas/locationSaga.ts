@@ -1,6 +1,9 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable prefer-template */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { GET_CURRENT_LOCATION, GET_LOCATION_SUCCESS, setPlaceId } from '../actions/locationActions';
+import { GET_CURRENT_LOCATION, GET_LOCATION_SUCCESS, setPlaceId, GET_INPUT_LOCATION } from '../actions/locationActions';
 
 interface ILocation {
   city: string;
@@ -9,11 +12,19 @@ interface ILocation {
   longitude: number;
 }
 
-async function fetchLocation() {
+async function fetchLocationByIP() {
   const location: ILocation = await axios
     .get('https://ipgeolocation.abstractapi.com/v1/?api_key=1af23530f57744fd82b5ee50622b261e')
     .then(({ data }) => data)
     .then(({ city, country, latitude, longitude }) => ({ city, country, latitude, longitude }));
+  return location;
+}
+async function fetchLocationByName(cityName: string) {
+  console.log('im here');
+  const location: ILocation = await axios
+    .get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=d47aaf5a7ca8357e87b2d06f96316705`)
+    .then(({ data }) => data[0])
+    .then(({ name, country, lat, lon }) => ({ city: name, country, latitude: lat, longitude: lon }));
   return location;
 }
 
@@ -27,8 +38,9 @@ async function fetchPlaceID(curLocation: string): Promise<string> {
   return placeId;
 }
 
-function* locationWorker() {
-  const location: ILocation = yield call(fetchLocation);
+function* locationWorkerById() {
+  const location: ILocation = yield call(fetchLocationByIP);
+
   const placeId: string = yield call(fetchPlaceID, location.city);
 
   yield put({
@@ -38,8 +50,42 @@ function* locationWorker() {
   yield put(setPlaceId(placeId));
 }
 
+function* locationWorkerByName({ cityName }: { cityName: string }) {
+  const location: ILocation = yield call(fetchLocationByName, cityName);
+  console.log(location);
+  const placeId: string = yield call(fetchPlaceID, location.city);
+
+  yield put({
+    type: GET_LOCATION_SUCCESS,
+    location,
+  });
+  yield put(setPlaceId(placeId));
+}
+
+// function* locationWorker({ cityName }: { cityName?: string }) {
+//   let location: ILocation;
+//   if (cityName) {
+//     location = yield call(fetchLocationByName, cityName);
+//     console.log(location);
+//   } else {
+//     location = yield call(fetchLocationByIP);
+//     console.log(location);
+//   }
+//   console.log(location);
+//   // @ts-ignore
+//   const placeId: string = yield call(fetchPlaceID, location.city);
+
+//   yield put({
+//     type: GET_LOCATION_SUCCESS,
+//     location,
+//   });
+//   yield put(setPlaceId(placeId));
+// }
+export function* inputLocationWatcher() {
+  yield takeLatest<any>(GET_INPUT_LOCATION, locationWorkerByName);
+}
 function* locationWatcher() {
-  yield takeLatest(GET_CURRENT_LOCATION, locationWorker);
+  yield takeLatest(GET_CURRENT_LOCATION, locationWorkerById);
 }
 
 export default locationWatcher;
