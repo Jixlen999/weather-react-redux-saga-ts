@@ -1,9 +1,9 @@
-/* eslint-disable no-useless-return */
-/* eslint-disable consistent-return */
 import React from 'react';
 import { useSelector } from 'react-redux';
+
 import { RootState } from '@store/reducers/rootReducer';
 import EventItem from '../EventItem';
+
 import Wrapper from './styled';
 
 function Events() {
@@ -17,7 +17,7 @@ function Events() {
             count++;
             return <EventItem key={event.id} event={event} />;
           }
-          return;
+          return null;
         })}
       </Wrapper>
     );

@@ -9,11 +9,11 @@ interface IState {
 }
 
 const initialState: IState = {
-  city: '',
-  country: '',
-  placeId: '',
-  latitude: null,
-  longitude: null,
+  city: 'London',
+  country: 'United Kingdom',
+  placeId: 'london',
+  latitude: 51.50853,
+  longitude: 0.12574,
 };
 
 interface IAction {

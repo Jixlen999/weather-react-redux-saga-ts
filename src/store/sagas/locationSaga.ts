@@ -17,13 +17,10 @@ async function fetchLocationByIP() {
   return location;
 }
 async function fetchLocationByName(cityName: string) {
-  console.log('here');
-
   const location: ILocation = await axios
     .get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=d47aaf5a7ca8357e87b2d06f96316705`)
     .then(({ data }) => data[0])
     .then(({ name, country, lat, lon }) => ({ city: name, country, latitude: lat, longitude: lon }));
-  console.log(location);
   return location;
 }
 
