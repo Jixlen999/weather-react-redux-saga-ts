@@ -25,9 +25,15 @@ function LocationInput() {
     dispatch(getInputLocation(curCity));
   };
 
+  const enterHandler = (e: { keyCode: number }) => {
+    if (e.keyCode === 13) {
+      clickHandler();
+    }
+  };
+
   return (
     <Wrapper>
-      <Input placeholder="Enter the city" value={curCity} onChange={changeHandler} />
+      <Input placeholder="Enter the city" value={curCity} onChange={changeHandler} onKeyDown={enterHandler} />
       <Btn type="submit" onClick={clickHandler}>
         Enter
       </Btn>
