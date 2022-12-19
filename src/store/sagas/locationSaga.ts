@@ -1,8 +1,5 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable prefer-template */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { GET_CURRENT_LOCATION, GET_LOCATION_SUCCESS, setPlaceId, GET_INPUT_LOCATION } from '../actions/locationActions';
 
 interface ILocation {
@@ -20,11 +17,13 @@ async function fetchLocationByIP() {
   return location;
 }
 async function fetchLocationByName(cityName: string) {
-  console.log('im here');
+  console.log('here');
+
   const location: ILocation = await axios
     .get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=d47aaf5a7ca8357e87b2d06f96316705`)
     .then(({ data }) => data[0])
     .then(({ name, country, lat, lon }) => ({ city: name, country, latitude: lat, longitude: lon }));
+  console.log(location);
   return location;
 }
 
@@ -61,30 +60,10 @@ function* locationWorkerByName({ cityName }: { cityName: string }) {
   yield put(setPlaceId(placeId));
 }
 
-// function* locationWorker({ cityName }: { cityName?: string }) {
-//   let location: ILocation;
-//   if (cityName) {
-//     location = yield call(fetchLocationByName, cityName);
-//     console.log(location);
-//   } else {
-//     location = yield call(fetchLocationByIP);
-//     console.log(location);
-//   }
-//   console.log(location);
-//   // @ts-ignore
-//   const placeId: string = yield call(fetchPlaceID, location.city);
+export function* ipLocationWatcher() {
+  yield takeEvery(GET_CURRENT_LOCATION, locationWorkerById);
+}
 
-//   yield put({
-//     type: GET_LOCATION_SUCCESS,
-//     location,
-//   });
-//   yield put(setPlaceId(placeId));
-// }
 export function* inputLocationWatcher() {
-  yield takeLatest<any>(GET_INPUT_LOCATION, locationWorkerByName);
+  yield takeEvery<any>(GET_INPUT_LOCATION, locationWorkerByName);
 }
-function* locationWatcher() {
-  yield takeLatest(GET_CURRENT_LOCATION, locationWorkerById);
-}
-
-export default locationWatcher;

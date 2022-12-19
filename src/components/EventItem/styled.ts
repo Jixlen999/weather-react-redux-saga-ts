@@ -27,4 +27,5 @@ export const Summary = styled.span`
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   overflow: hidden;
+  text-align: center;
 `;

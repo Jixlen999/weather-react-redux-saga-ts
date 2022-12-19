@@ -1,9 +1,9 @@
-import { fork } from 'redux-saga/effects';
-import locationWatcher, { inputLocationWatcher } from './locationSaga';
+import { spawn } from 'redux-saga/effects';
+import { inputLocationWatcher, ipLocationWatcher } from './locationSaga';
 import weatherWatcher from './weatherSaga';
 
 export default function* rootSaga() {
-  yield fork(locationWatcher);
-  yield fork(weatherWatcher);
-  yield fork(inputLocationWatcher);
+  yield spawn(inputLocationWatcher);
+  yield spawn(ipLocationWatcher);
+  yield spawn(weatherWatcher);
 }

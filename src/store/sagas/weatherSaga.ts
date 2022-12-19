@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
-import { call, takeLatest, select, put, all, delay } from 'redux-saga/effects';
+import { call, select, put, takeEvery } from 'redux-saga/effects';
 import { GET_CURRENT_WEATHER, setCurrentWeather, setDailyWeather, setHourlyWeather } from '../actions/weatherActions';
 import { RootState } from '../reducers/rootReducer';
 
@@ -51,7 +50,7 @@ function* weatherWorker() {
 }
 
 function* weatherWatcher() {
-  yield takeLatest(GET_CURRENT_WEATHER, weatherWorker);
+  yield takeEvery(GET_CURRENT_WEATHER, weatherWorker);
 }
 
 export default weatherWatcher;
