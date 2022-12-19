@@ -26,7 +26,7 @@ function Forecast() {
         <Icon src={icon ? `https://www.meteosource.com/static/img/ico/weather/${icon}.svg` : ''} alt="weather icon" />
         <TempWrapper>
           <Day>Today</Day>
-          <Temp>{temperature}°</Temp>
+          <Temp>{Math.round(Number(temperature))}°</Temp>
         </TempWrapper>
       </WeatherNow>
       <FutureWeatherWrapper>

@@ -24,7 +24,7 @@ function ForecastService() {
               <Item key={time}>
                 <WeekDayOrTime>{time}</WeekDayOrTime>
                 <Icon src={icon && `http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon" />
-                <Temperature>{temp.toFixed(1)}°</Temperature>
+                <Temperature>{Math.round(Number(temp))}°</Temperature>
               </Item>
             );
           })}
@@ -42,7 +42,7 @@ function ForecastService() {
             <Item key={day}>
               <WeekDayOrTime>{weekDay}</WeekDayOrTime>
               <Icon src={icon && `https://www.meteosource.com/static/img/ico/weather/${icon}.svg`} alt="weather icon" />
-              <Temperature>{temperature}°</Temperature>
+              <Temperature>{Math.round(Number(temperature))}°</Temperature>
             </Item>
           );
         })}
