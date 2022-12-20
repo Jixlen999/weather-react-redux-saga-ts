@@ -7,6 +7,9 @@ export const DateAndCityLayout = styled.div`
   justify-content: space-between;
   color: white;
   margin: 70px 70px 20px 70px;
+  @media (max-width: 1440px) {
+    margin: 20px;
+  }
 `;
 
 export const Location = styled.div`

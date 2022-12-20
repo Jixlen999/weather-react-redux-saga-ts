@@ -11,7 +11,13 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 80px;
+  gap: 20px;
+  @media (max-width: 1440px) {
+    flex-direction: column;
+    height: 300px;
+    overflow-y: scroll;
+    padding: 20px;
+  }
 `;
 
 export const WeatherNow = styled.div`
@@ -20,9 +26,20 @@ export const WeatherNow = styled.div`
   justify-content: space-around;
   width: 20%;
   height: 100%;
+  @media (max-width: 768px) {
+    width: auto;
+    justify-content: space-evenly;
+    border-bottom: 2px solid white;
+  }
+  @media (max-width: 1440px) {
+    width: 200px;
+  }
 `;
 export const FutureWeatherWrapper = styled.div`
   width: 60%;
+  @media (max-width: 1440px) {
+    width: auto;
+  }
 `;
 
 export const Day = styled.h3`
@@ -47,4 +64,10 @@ export const TempWrapper = styled.div`
 
 export const Switchers = styled.div`
   width: 10%;
+  @media (max-width: 1440px) {
+    width: auto;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;

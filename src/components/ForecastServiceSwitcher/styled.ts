@@ -10,6 +10,12 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  @media (max-width: 1440px) {
+    flex-direction: row;
+  }
+  @media (max-width: 560px) {
+    flex-direction: column;
+  }
 `;
 
 export const Btn = styled.div<IBtn>`

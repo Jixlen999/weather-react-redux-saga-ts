@@ -1,20 +1,22 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState } from 'react';
 import ApiCalendar from 'react-google-calendar-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 import { eventsSelector } from '@src/store/selectors';
 import googleButtons from '@src/constants/googleButtons';
 import config from '@src/constants/googleConfig';
 import { storeEvents, clearEvents } from '@src/store/actions/eventsActions';
 
-import { Wrapper, ButtonWrapper } from './styled';
+import { Wrapper, ButtonWrapper, Menu } from './styled';
 
 function LoginWrapper() {
   const dispatch = useDispatch();
   const events = useSelector(eventsSelector);
-
+  const [active, setActive] = useState(false);
   const apiCalendar = new ApiCalendar(config);
 
   const loginClick = () => {
@@ -59,7 +61,10 @@ function LoginWrapper() {
   };
 
   return (
-    <Wrapper>
+    <Wrapper active={active}>
+      <Menu onClick={() => setActive(!active)}>
+        <AiOutlineMenu />
+      </Menu>
       {googleButtons.map(({ text, icon }) => (
         <ButtonWrapper key={text} onClick={clickHandler(text)}>
           {icon}

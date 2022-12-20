@@ -12,5 +12,9 @@ const Wrapper = styled.div<IMainWrapper>`
   background-size: cover;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 16px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 export default Wrapper;
