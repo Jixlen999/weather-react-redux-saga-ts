@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-alert */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -10,7 +6,8 @@ import debounce from 'lodash.debounce';
 import { getCurrentLocation, getPlaceId, getInputLocation } from '@store/actions/locationActions';
 import { RootState } from '@store/reducers/rootReducer';
 
-import { Input, Btn, Wrapper, SearchFields, SearchWrapper } from './styled';
+import { Input, Btn, Wrapper, SearchWrapper } from './styled';
+import SearchElement from '../SearchElement';
 
 function LocationInput() {
   const dispatch = useDispatch<(arg: any) => any>();
@@ -33,7 +30,7 @@ function LocationInput() {
         setSearch(citiesArray);
       });
   };
-  const debouncedFetch = useCallback(debounce(fetchCities, 500), []);
+  const debouncedFetch = useCallback(debounce(fetchCities, 300), []);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurCity(e.target.value);
@@ -58,16 +55,26 @@ function LocationInput() {
     }
   };
 
+  const handleBlur = () => {
+    setTimeout(() => {
+      setSearch([]);
+    }, 300);
+  };
+
   return (
     <Wrapper>
       <div>
-        <Input placeholder="Enter the city" value={curCity} onChange={changeHandler} onKeyDown={enterHandler} />
+        <Input
+          placeholder="Enter the city"
+          value={curCity}
+          onChange={changeHandler}
+          onKeyDown={enterHandler}
+          onBlur={handleBlur}
+        />
         {search.length > 0 && (
           <SearchWrapper>
             {search.map((el) => (
-              <SearchFields>
-                {el.name}, {el.country}
-              </SearchFields>
+              <SearchElement key={el.latitude + el.longitude} element={el} setCurCity={setCurCity} />
             ))}
           </SearchWrapper>
         )}

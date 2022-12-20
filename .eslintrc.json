@@ -17,7 +17,9 @@
     "@typescript-eslint/default-param-last": "off",
     "react/button-has-type": "off",
     "no-plusplus": "off",
-    "@typescript-eslint/naming-convention": "off"
+    "@typescript-eslint/naming-convention": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-shadow": "off"
   },
   "settings": {
     "import/resolver": {
