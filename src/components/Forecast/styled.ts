@@ -16,7 +16,11 @@ export const Wrapper = styled.div`
     flex-direction: column;
     height: 300px;
     overflow-y: scroll;
-    padding: 20px;
+    padding: 10px;
+  }
+  @media (max-width: 568px) {
+    padding-bottom: 50px;
+    flex-direction: row;
   }
 `;
 
@@ -26,13 +30,17 @@ export const WeatherNow = styled.div`
   justify-content: space-around;
   width: 20%;
   height: 100%;
+
+  @media (max-width: 1440px) {
+    width: 200px;
+  }
   @media (max-width: 768px) {
     width: auto;
     justify-content: space-evenly;
     border-bottom: 2px solid white;
   }
-  @media (max-width: 1440px) {
-    width: 200px;
+  @media (max-width: 568px) {
+    border-bottom: none;
   }
 `;
 export const FutureWeatherWrapper = styled.div`

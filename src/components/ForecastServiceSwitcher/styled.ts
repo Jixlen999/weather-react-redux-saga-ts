@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   @media (max-width: 1440px) {
     flex-direction: row;
   }
-  @media (max-width: 560px) {
+  @media (max-width: 568px) {
     flex-direction: column;
   }
 `;
