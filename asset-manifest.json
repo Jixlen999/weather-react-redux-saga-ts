@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/weather-react-redux-saga-ts/static/css/main.b3eeeea7.css",
-    "main.js": "/weather-react-redux-saga-ts/static/js/main.889328ed.js",
+    "main.js": "/weather-react-redux-saga-ts/static/js/main.03bdf6c0.js",
     "index.html": "/weather-react-redux-saga-ts/index.html",
     "main.b3eeeea7.css.map": "/weather-react-redux-saga-ts/static/css/main.b3eeeea7.css.map",
-    "main.889328ed.js.map": "/weather-react-redux-saga-ts/static/js/main.889328ed.js.map"
+    "main.03bdf6c0.js.map": "/weather-react-redux-saga-ts/static/js/main.03bdf6c0.js.map"
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.889328ed.js"
+    "static/js/main.03bdf6c0.js"
   ]
 }
