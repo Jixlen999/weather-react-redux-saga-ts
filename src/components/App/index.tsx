@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import LocationInput from '@components/LocationInput';
 import Main from '@components/Main';
 import { weatherSummarySelector } from '@src/store/selectors';
+import ErrorBoundary from '../ErrorBoundary';
 import LoginWrapper from '../LoginWrapper';
 
 import AppWrapper from './styled';
@@ -12,11 +13,13 @@ function App() {
   const weatherSummary = useSelector(weatherSummarySelector);
 
   return (
-    <AppWrapper weatherSummary={weatherSummary}>
-      <LoginWrapper />
-      <LocationInput />
-      <Main />
-    </AppWrapper>
+    <ErrorBoundary>
+      <AppWrapper weatherSummary={weatherSummary}>
+        <LoginWrapper />
+        <LocationInput />
+        <Main />
+      </AppWrapper>
+    </ErrorBoundary>
   );
 }
 

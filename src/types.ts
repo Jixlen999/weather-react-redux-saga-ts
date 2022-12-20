@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type Service = 'daily' | 'hourly';
 
 export interface IEventsState {
@@ -64,4 +66,11 @@ export interface IWeatherItemProps {
   temperature: string | number;
   time: string;
   iconSrc: string;
+}
+
+export interface IErrorBoundaryProps {
+  children: ReactNode;
+}
+export interface IErrorBoundaryState {
+  hasError: boolean;
 }
