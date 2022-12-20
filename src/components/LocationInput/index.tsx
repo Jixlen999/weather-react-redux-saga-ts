@@ -15,6 +15,14 @@ function LocationInput() {
   const [curCity, setCurCity] = useState<string>('');
   const [search, setSearch] = useState<any[]>([]);
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(() => {
+      dispatch(getCurrentLocation());
+      dispatch(getPlaceId());
+      setCurCity(city);
+    });
+  }, [city, country, dispatch]);
+
   const fetchCities = (inputValue: any) => {
     axios
       .get(
@@ -37,16 +45,9 @@ function LocationInput() {
     debouncedFetch(e.target.value);
   };
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(() => {
-      dispatch(getCurrentLocation());
-      dispatch(getPlaceId());
-      setCurCity(city);
-    });
-  }, [city, country, dispatch]);
-
   const clickHandler = () => {
     dispatch(getInputLocation(curCity));
+    setSearch([]);
   };
 
   const enterHandler = (e: { keyCode: number }) => {
@@ -55,7 +56,7 @@ function LocationInput() {
     }
   };
 
-  const handleBlur = () => {
+  const blurHandler = () => {
     setTimeout(() => {
       setSearch([]);
     }, 300);
@@ -69,7 +70,7 @@ function LocationInput() {
           value={curCity}
           onChange={changeHandler}
           onKeyDown={enterHandler}
-          onBlur={handleBlur}
+          onBlur={blurHandler}
         />
         {search.length > 0 && (
           <SearchWrapper>

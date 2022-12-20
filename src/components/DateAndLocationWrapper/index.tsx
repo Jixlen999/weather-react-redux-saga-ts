@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '@src/store/reducers/rootReducer';
+
+import { locationSelector } from '@src/store/selectors';
 import CurrentDate from '../CurrentDate';
 
 import { Country, DateAndCityLayout, Location, City } from './styled';
 
 function DateAndLocationWrapper() {
-  const { city, country } = useSelector((store: RootState) => store.location);
+  const { city, country } = useSelector(locationSelector);
 
   return (
     <DateAndCityLayout>

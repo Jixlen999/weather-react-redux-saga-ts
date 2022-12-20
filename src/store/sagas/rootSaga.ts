@@ -1,4 +1,5 @@
 import { spawn } from 'redux-saga/effects';
+
 import { inputLocationWatcher, ipLocationWatcher } from './locationSaga';
 import weatherWatcher from './weatherSaga';
 

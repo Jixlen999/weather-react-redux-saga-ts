@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import eventsReducer from './eventsReducer';
 import locationReducer from './locationReducer';
 import serviceSwitcherReducer from './serviceSwitcherReducer';

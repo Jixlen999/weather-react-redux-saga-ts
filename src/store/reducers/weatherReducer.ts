@@ -1,18 +1,7 @@
+import { IWeatherAction, IWeatherState } from '@src/types';
 import { SET_CURRENT_WEATHER, SET_DAILY_WEATHER, SET_HOURLY_WEATHER } from '../actions/weatherActions';
 
-interface ICurrentWeather {
-  icon: string | null;
-  temperature: string | null;
-  summary: string;
-}
-
-interface IState {
-  currentWeather: ICurrentWeather;
-  dailyWeather?: any;
-  hourlyWeather?: any;
-}
-
-const initialState: IState = {
+const initialState: IWeatherState = {
   currentWeather: {
     icon: null,
     temperature: null,
@@ -22,14 +11,7 @@ const initialState: IState = {
   hourlyWeather: null,
 };
 
-interface IAction {
-  type: string;
-  currentWeather?: ICurrentWeather;
-  dailyWeather?: any;
-  hourlyWeather?: any;
-}
-
-const weatherReducer = (state: IState = initialState, action: IAction): IState => {
+const weatherReducer = (state: IWeatherState = initialState, action: IWeatherAction): IWeatherState => {
   switch (action.type) {
     case SET_CURRENT_WEATHER: {
       return { ...state, currentWeather: action.currentWeather! };

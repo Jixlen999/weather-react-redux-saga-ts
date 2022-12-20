@@ -1,18 +1,22 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { RootState } from '@src/store/reducers/rootReducer';
-import DateAndEvents from '../DateAndEvents';
+import { weatherSummarySelector } from '@src/store/selectors';
 import Forecast from '../Forecast';
+import Events from '../Events';
+import DateAndLocationWrapper from '../DateAndLocationWrapper';
 
 import Wrapper from './styled';
 
 function Main() {
-  const weatherSummary = useSelector((store: RootState) => store.weather.currentWeather.summary);
+  const weatherSummary = useSelector(weatherSummarySelector);
 
   return (
     <Wrapper weatherSummary={weatherSummary}>
-      <DateAndEvents />
+      <>
+        <DateAndLocationWrapper />
+        <Events />
+      </>
       <Forecast />
     </Wrapper>
   );

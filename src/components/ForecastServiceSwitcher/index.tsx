@@ -17,6 +17,7 @@ function ForecastServiceSwitcher() {
     setActive(false);
     dispatch(setService('hourly'));
   };
+
   return (
     <Wrapper>
       <Btn active={active} onClick={dailyClick}>

@@ -1,3 +1,5 @@
+import { ILocation } from '@src/types';
+
 export const GET_CURRENT_LOCATION = 'GET_CURRENT_LOCATION';
 export const GET_LOCATION_SUCCESS = 'GET_LOCATION_SUCCESS';
 export const SET_PLACE_ID = 'SET_PLACE_ID';
@@ -20,4 +22,9 @@ export const getCurrentLocation = () => ({
 export const getInputLocation = (cityName: string) => ({
   type: GET_INPUT_LOCATION,
   cityName,
+});
+
+export const getLocationSuccess = (location: ILocation) => ({
+  type: GET_LOCATION_SUCCESS,
+  location,
 });

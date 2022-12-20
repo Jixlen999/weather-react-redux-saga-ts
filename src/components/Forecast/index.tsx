@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@store/reducers/rootReducer';
+
+import { currentWeatherSelector, locationSelector } from '@src/store/selectors';
 import { getCurrentWeather } from '@src/store/actions/weatherActions';
 import ForecastService from '../ForecastService';
 import ForecastServiceSwitcher from '../ForecastServiceSwitcher';
@@ -9,8 +10,8 @@ import { Wrapper, WeatherNow, FutureWeatherWrapper, Day, Temp, Icon, TempWrapper
 
 function Forecast() {
   const dispatch = useDispatch();
-  const { city } = useSelector((state: RootState) => state.location);
-  const { icon, temperature } = useSelector((state: RootState) => state.weather.currentWeather);
+  const { city } = useSelector(locationSelector);
+  const { icon, temperature } = useSelector(currentWeatherSelector);
 
   useEffect(() => {
     (async () => {

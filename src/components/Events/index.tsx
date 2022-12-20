@@ -1,17 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { RootState } from '@store/reducers/rootReducer';
+import { eventsSelector } from '@src/store/selectors';
 import EventItem from '../EventItem';
 
 import Wrapper from './styled';
 
 function Events() {
-  const eventsSelector = useSelector((store: RootState) => store.events.events);
-  if (eventsSelector.length > 0) {
+  const events = useSelector(eventsSelector);
+
+  if (events.length > 0) {
     return (
       <Wrapper>
-        {eventsSelector.map((event) => {
+        {events.map((event) => {
           let count = 0;
           if (count <= 3) {
             count++;

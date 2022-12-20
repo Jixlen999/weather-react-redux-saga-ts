@@ -24,4 +24,7 @@ export const ButtonWrapper = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+  svg {
+    font-size: 30px;
+  }
 `;

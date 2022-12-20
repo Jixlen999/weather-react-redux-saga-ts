@@ -1,19 +1,11 @@
+import { IEventsAction, IEventsState } from '@src/types';
 import { SET_EVENTS, CLEAR_EVENTS } from '../actions/eventsActions';
 
-interface IState {
-  events: any[];
-}
-
-const InitialState: IState = {
+const InitialState: IEventsState = {
   events: [],
 };
 
-interface IAction {
-  type: string;
-  events: any[];
-}
-
-const eventsReducer = (state: IState = InitialState, action: IAction) => {
+const eventsReducer = (state: IEventsState = InitialState, action: IEventsAction) => {
   switch (action.type) {
     case SET_EVENTS:
       return { ...state, events: [...state.events, action.events] };

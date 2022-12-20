@@ -1,6 +1,6 @@
-export const SET_SERVICE = 'SET_SERVICE';
+import { Service } from '@src/types';
 
-type Service = 'daily' | 'hourly';
+export const SET_SERVICE = 'SET_SERVICE';
 
 export const setService = (service: Service) => ({
   type: SET_SERVICE,
