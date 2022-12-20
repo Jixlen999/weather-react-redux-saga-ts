@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import chooseBgImage from '@src/utils/chooseImage';
 
-interface IMainWrapper {
-  weatherSummary: string;
-}
+import chooseBgImage from '@src/utils/chooseImage';
+import devices from '@src/constants/devices';
+import { IMainWrapper } from '@src/types';
+
 const Wrapper = styled.div<IMainWrapper>`
   position: relative;
   width: ${({ theme }) => theme.width[10]}%;
@@ -13,7 +13,7 @@ const Wrapper = styled.div<IMainWrapper>`
   box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
     ${({ theme }) => theme.boxShadow[1]}px;
   border-radius: ${({ theme }) => theme.borderRadius[3]}px;
-  @media (max-width: 768px) {
+  @media ${devices.tablet} {
     width: ${({ theme }) => theme.width[0]}%;
     height: ${({ theme }) => theme.height[0]}%;
     background: none;

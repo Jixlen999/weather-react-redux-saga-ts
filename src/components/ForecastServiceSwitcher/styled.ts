@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-interface IBtn {
-  active: boolean;
-}
+import devices from '@src/constants/devices';
+import { IBtn } from '@src/types';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -10,10 +9,10 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: ${({ theme }) => theme.gap[2]}px;
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     flex-direction: row;
   }
-  @media (max-width: 568px) {
+  @media ${devices.largePhone} {
     flex-direction: column;
   }
 `;

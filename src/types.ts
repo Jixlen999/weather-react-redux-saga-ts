@@ -77,3 +77,9 @@ export interface IErrorBoundaryState {
 export interface ILoginWrapper {
   active: boolean;
 }
+export interface IBtn {
+  active: boolean;
+}
+export interface IMainWrapper {
+  weatherSummary: string;
+}

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import devices from '@src/constants/devices';
+
 export const Wrapper = styled.div`
   width: ${({ theme }) => theme.width[0]}%;
   height: ${({ theme }) => theme.height[5]}px;
@@ -12,13 +14,13 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: ${({ theme }) => theme.gap[1]}px;
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     height: ${({ theme }) => theme.height[6]}%;
     flex-direction: column;
     overflow-y: auto;
     padding: ${({ theme }) => theme.padding[4]}px;
   }
-  @media (max-width: 568px) {
+  @media ${devices.largePhone} {
     height: auto;
     flex-direction: row;
     overflow-y: none;
@@ -33,21 +35,21 @@ export const WeatherNow = styled.div`
   justify-content: space-around;
   width: ${({ theme }) => theme.width[5]}%;
   height: ${({ theme }) => theme.height[0]}%;
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     width: ${({ theme }) => theme.width[6]}px;
   }
-  @media (max-width: 768px) {
+  @media ${devices.tablet} {
     width: auto;
     justify-content: space-evenly;
     border-bottom: ${({ theme }) => theme.border[0]}px solid white;
   }
-  @media (max-width: 568px) {
+  @media ${devices.largePhone} {
     border-bottom: none;
   }
 `;
 export const FutureWeatherWrapper = styled.div`
   width: ${({ theme }) => theme.width[7]}%;
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     width: auto;
   }
 `;
@@ -75,10 +77,10 @@ export const TempWrapper = styled.div`
 
 export const Switchers = styled.div`
   width: ${({ theme }) => theme.width[8]}%;
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     width: auto;
   }
-  @media (max-width: 768px) {
+  @media ${devices.tablet} {
     width: ${({ theme }) => theme.width[0]}%;
   }
 `;

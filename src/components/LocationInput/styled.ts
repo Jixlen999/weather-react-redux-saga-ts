@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import devices from '@src/constants/devices';
+
 export const Input = styled.input`
   outline: none;
   display: inline-block;
@@ -12,7 +14,7 @@ export const Input = styled.input`
   color: ${({ theme }) => theme.white};
   box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
     ${({ theme }) => theme.boxShadow[1]}px;
-  @media (max-width: 1024px) {
+  @media ${devices.tablet} {
     width: ${({ theme }) => theme.width[2]}px;
   }
 `;
@@ -26,7 +28,7 @@ export const SearchWrapper = styled.div`
 export const Btn = styled.button`
   display: inline-block;
   width: ${({ theme }) => theme.width[9]}px;
-  height: 100%;
+  height: ${({ theme }) => theme.height[0]}%;
   background: ${({ theme }) => theme.transparentDark};
   color: white;
   border: none;
@@ -39,7 +41,7 @@ export const Btn = styled.button`
   &:hover {
     background: ${({ theme }) => theme.dark};
   }
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     padding: 0 ${({ theme }) => theme.padding[7]}px;
   }
 `;
@@ -49,7 +51,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 768px) {
+  @media ${devices.tablet} {
     width: auto;
   }
 `;

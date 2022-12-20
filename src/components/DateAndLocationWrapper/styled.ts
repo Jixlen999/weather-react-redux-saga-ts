@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import devices from '@src/constants/devices';
+
 export const DateAndCityLayout = styled.div`
   display: flex;
   flex-direction: row;
@@ -8,7 +10,7 @@ export const DateAndCityLayout = styled.div`
   color: white;
   margin: ${({ theme }) => theme.margin[0]}px ${({ theme }) => theme.margin[0]}px ${({ theme }) => theme.margin[1]}px
     ${({ theme }) => theme.margin[0]}px;
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     margin: ${({ theme }) => theme.margin[1]}px;
   }
 `;

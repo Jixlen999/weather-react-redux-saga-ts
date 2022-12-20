@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import devices from '@src/constants/devices';
+
 const Wrapper = styled.div`
   margin-left: ${({ theme }) => theme.margin[0]}px;
   color: white;
@@ -13,7 +15,7 @@ const Wrapper = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
     ${({ theme }) => theme.boxShadow[1]}px;
   font-weight: ${({ theme }) => theme.fontWeight[1]};
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     margin: auto;
     width: auto;
     height: auto;

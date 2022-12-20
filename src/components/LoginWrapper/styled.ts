@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { ILoginWrapper } from '@src/types';
+import devices from '@src/constants/devices';
 
 export const Wrapper = styled.div<ILoginWrapper>`
   position: absolute;
@@ -15,11 +16,11 @@ export const Wrapper = styled.div<ILoginWrapper>`
   padding-top: ${({ theme }) => theme.padding[5]}px;
   box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
     ${({ theme }) => theme.boxShadow[1]}px;
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     width: auto;
     padding: ${({ theme }) => theme.padding[4]}px;
   }
-  @media (max-width: 768px) {
+  @media ${devices.tablet} {
     flex-direction: column;
     height: ${({ active }: any) => (!active ? '45px' : 'auto')};
     width: auto;
@@ -44,7 +45,7 @@ export const ButtonWrapper = styled.div`
     font-size: ${({ theme }) => theme.fontSize[2]}px;
   }
 
-  @media (max-width: 1440px) {
+  @media ${devices.laptop} {
     width: auto;
     p {
       display: none;
@@ -53,7 +54,7 @@ export const ButtonWrapper = styled.div`
       font-size: ${({ theme }) => theme.fontSize[7]}px;
     }
   }
-  @media (max-width: 768px) {
+  @media ${devices.tablet} {
     svg {
       font-size: ${({ theme }) => theme.fontSize[1]}px;
     }
@@ -71,7 +72,7 @@ export const Menu = styled.div`
   &:hover {
     transform: scale(${({ theme }) => theme.scale[0]});
   }
-  @media (max-width: 768px) {
+  @media ${devices.tablet} {
     display: block;
   }
 `;
