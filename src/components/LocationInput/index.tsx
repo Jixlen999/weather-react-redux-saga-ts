@@ -26,7 +26,7 @@ function LocationInput() {
   const fetchCities = (inputValue: any) => {
     axios
       .get(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=d47aaf5a7ca8357e87b2d06f96316705`,
+        `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
       )
       .then(({ data }) => {
         const citiesArray = data.map(({ name, lat, lon, country }: any) => ({
