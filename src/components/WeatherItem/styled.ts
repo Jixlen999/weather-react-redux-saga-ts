@@ -13,8 +13,8 @@ export const Icon = styled.img`
   width: 70px;
   height: 70px;
   @media (max-width: 568px) {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -27,12 +27,13 @@ export const WeekDayOrTime = styled.p`
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   @media (max-width: 568px) {
-    font-size: 20px;
+    font-size: 16px;
   }
 `;
 export const Temperature = styled.p`
   font-size: 26px;
   @media (max-width: 568px) {
+    font-size: 30px;
     font-weight: 600;
   }
 `;
