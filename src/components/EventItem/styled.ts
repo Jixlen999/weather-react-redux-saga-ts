@@ -50,7 +50,7 @@ export const Summary = styled.span`
   }
   @media (max-width: 768px) {
     font-size: 14px;
-    height: 26px;
+    height: 24px;
     width: 100%;
   }
 `;

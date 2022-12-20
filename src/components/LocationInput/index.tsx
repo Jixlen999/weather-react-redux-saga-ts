@@ -71,6 +71,7 @@ function LocationInput() {
           onChange={changeHandler}
           onKeyDown={enterHandler}
           onBlur={blurHandler}
+          data-cy="cityInput"
         />
         {search.length > 0 && (
           <SearchWrapper>

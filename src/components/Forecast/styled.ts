@@ -20,9 +20,10 @@ export const Wrapper = styled.div`
   }
   @media (max-width: 568px) {
     height: auto;
-    padding-bottom: 50px;
     flex-direction: row;
     overflow-y: none;
+    padding-top: 20px;
+    padding-bottom: 70px;
   }
 `;
 
