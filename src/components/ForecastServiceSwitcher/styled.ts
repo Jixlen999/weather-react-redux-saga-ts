@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: ${({ theme }) => theme.gap[2]}px;
   @media (max-width: 1440px) {
     flex-direction: row;
   }
@@ -20,19 +20,20 @@ export const Wrapper = styled.div`
 
 export const Btn = styled.div<IBtn>`
   text-align: center;
-  width: 100%;
-  padding: 10px 15px;
-  font-size: 20px;
+  width: ${({ theme }) => theme.width[0]}%;
+  padding: ${({ theme }) => theme.padding[4]}px ${({ theme }) => theme.padding[7]}px;
+  font-size: ${({ theme }) => theme.fontSize[1]}px;
   display: inline-block;
   height: auto;
-  background: ${({ active }) => (active ? 'rgba(40, 44, 52, 1)' : 'rgba(255, 255, 255, 0.1)')};
+  background: ${({ active, theme }) => (active ? theme.dark : theme.transparentLight)};
   color: white;
-  border: 2px solid white;
-  border-radius: 4px;
+  border: ${({ theme }) => theme.border[0]}px solid ${({ theme }) => theme.white};
+  border-radius: ${({ theme }) => theme.borderRadius[2]}px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all ${({ theme }) => theme.transition[0]}s ease;
+  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
+    ${({ theme }) => theme.boxShadow[1]}px;
   &:hover {
-    background-color: rgba(40, 44, 52, 1);
+    background-color: ${({ theme }) => theme.dark};
   }
 `;

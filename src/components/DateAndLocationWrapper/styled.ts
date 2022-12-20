@@ -6,27 +6,28 @@ export const DateAndCityLayout = styled.div`
   align-items: center;
   justify-content: space-between;
   color: white;
-  margin: 70px 70px 20px 70px;
+  margin: ${({ theme }) => theme.margin[0]}px ${({ theme }) => theme.margin[0]}px ${({ theme }) => theme.margin[1]}px
+    ${({ theme }) => theme.margin[0]}px;
   @media (max-width: 1440px) {
-    margin: 20px;
+    margin: ${({ theme }) => theme.margin[1]}px;
   }
 `;
 
 export const Location = styled.div`
   h3 {
-    font-size: 30px;
-    font-weight: 100;
+    font-size: ${({ theme }) => theme.fontSize[2]}px;
+    font-weight: ${({ theme }) => theme.fontWeight[0]};
   }
 `;
 
 export const Country = styled.h5`
-  font-size: 16px;
-  font-weight: 100;
+  font-size: ${({ theme }) => theme.fontSize[3]}px;
+  font-weight: ${({ theme }) => theme.fontWeight[0]};
   text-align: end;
 `;
 
 export const City = styled.h2`
-  font-size: 28px;
-  font-weight: 100;
+  font-size: ${({ theme }) => theme.fontSize[4]}px;
+  font-weight: ${({ theme }) => theme.fontWeight[0]};
   text-align: start;
 `;

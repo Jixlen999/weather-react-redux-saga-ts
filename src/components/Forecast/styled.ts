@@ -1,29 +1,29 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  width: 100%;
-  height: 200px;
-  padding: 30px 70px;
+  width: ${({ theme }) => theme.width[0]}%;
+  height: ${({ theme }) => theme.height[5]}px;
+  padding: ${({ theme }) => theme.padding[2]}px ${({ theme }) => theme.padding[3]}px;
   position: absolute;
   bottom: 0;
-  background: rgba(40, 44, 52, 0.8);
+  background: ${({ theme }) => theme.transparentDark};
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: ${({ theme }) => theme.gap[1]}px;
   @media (max-width: 1440px) {
-    height: 45%;
+    height: ${({ theme }) => theme.height[6]}%;
     flex-direction: column;
     overflow-y: auto;
-    padding: 10px;
+    padding: ${({ theme }) => theme.padding[4]}px;
   }
   @media (max-width: 568px) {
     height: auto;
     flex-direction: row;
     overflow-y: none;
-    padding-top: 20px;
-    padding-bottom: 70px;
+    padding-top: ${({ theme }) => theme.padding[5]}px;
+    padding-bottom: ${({ theme }) => theme.padding[3]}px;
   }
 `;
 
@@ -31,41 +31,41 @@ export const WeatherNow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 20%;
-  height: 100%;
-
+  width: ${({ theme }) => theme.width[5]}%;
+  height: ${({ theme }) => theme.height[0]}%;
   @media (max-width: 1440px) {
-    width: 200px;
+    width: ${({ theme }) => theme.width[6]}px;
   }
   @media (max-width: 768px) {
     width: auto;
     justify-content: space-evenly;
-    border-bottom: 2px solid white;
+    border-bottom: ${({ theme }) => theme.border[0]}px solid white;
   }
   @media (max-width: 568px) {
     border-bottom: none;
   }
 `;
 export const FutureWeatherWrapper = styled.div`
-  width: 60%;
+  width: ${({ theme }) => theme.width[7]}%;
   @media (max-width: 1440px) {
     width: auto;
   }
 `;
 
 export const Day = styled.h3`
-  padding: 5px 10px;
+  padding: ${({ theme }) => theme.padding[6]}px ${({ theme }) => theme.padding[6]}px;
   text-transform: uppercase;
-  background-color: #21252b;
-  border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: ${({ theme }) => theme.dark};
+  border-radius: ${({ theme }) => theme.borderRadius[0]}px;
+  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
+    ${({ theme }) => theme.boxShadow[1]}px; ;
 `;
 export const Temp = styled.p`
-  font-size: 60px;
+  font-size: ${({ theme }) => theme.fontSize[6]}px;
 `;
 export const Icon = styled.img`
-  width: 150px;
-  height: 150px;
+  width: ${({ theme }) => theme.width[2]}px;
+  height: ${({ theme }) => theme.height[7]}px;
 `;
 export const TempWrapper = styled.div`
   display: flex;
@@ -74,11 +74,11 @@ export const TempWrapper = styled.div`
 `;
 
 export const Switchers = styled.div`
-  width: 10%;
+  width: ${({ theme }) => theme.width[8]}%;
   @media (max-width: 1440px) {
     width: auto;
   }
   @media (max-width: 768px) {
-    width: 100%;
+    width: ${({ theme }) => theme.width[0]}%;
   }
 `;

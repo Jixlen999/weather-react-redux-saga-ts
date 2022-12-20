@@ -1,39 +1,40 @@
 import styled from 'styled-components';
 
 export const Item = styled.div`
-  font-size: 30px;
+  font-size: ${({ theme }) => theme.fontSize[2]}px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: ${({ theme }) => theme.gap[2]}px;
 `;
 
 export const Icon = styled.img`
-  width: 70px;
-  height: 70px;
+  width: ${({ theme }) => theme.width[10]}px;
+  height: ${({ theme }) => theme.height[8]}px;
   @media (max-width: 568px) {
-    width: 100px;
-    height: 100px;
+    width: ${({ theme }) => theme.width[0]}px;
+    height: ${({ theme }) => theme.height[0]}px;
   }
 `;
 
 export const WeekDayOrTime = styled.p`
-  font-size: 14px;
-  font-weight: 600;
-  padding: 5px 10px;
+  font-size: ${({ theme }) => theme.fontSize[5]}px;
+  font-weight: ${({ theme }) => theme.fontWeight[2]};
+  padding: ${({ theme }) => theme.padding[6]}px ${({ theme }) => theme.padding[4]}px;
   text-transform: uppercase;
-  background-color: #21252b;
-  border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: ${({ theme }) => theme.dark};
+  border-radius: ${({ theme }) => theme.borderRadius[0]}px;
+  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
+    ${({ theme }) => theme.boxShadow[1]}px;
   @media (max-width: 568px) {
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSize[3]}px;
   }
 `;
 export const Temperature = styled.p`
-  font-size: 26px;
+  font-size: ${({ theme }) => theme.fontSize[9]}px;
   @media (max-width: 568px) {
-    font-size: 30px;
-    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSize[2]}px;
+    font-weight: ${({ theme }) => theme.fontWeight[2]};
   }
 `;

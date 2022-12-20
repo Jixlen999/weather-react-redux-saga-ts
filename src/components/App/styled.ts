@@ -6,12 +6,12 @@ interface IAppWrapper {
 }
 
 const AppWrapper = styled.div<IAppWrapper>`
-  width: 100%;
-  height: 100vh;
+  width: ${({ theme }) => theme.width[0]}%;
+  height: ${({ theme }) => theme.height[0]}vh;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 30px;
+  gap: ${({ theme }) => theme.gap[0]}px;
   background: url(${({ weatherSummary }) => chooseBgImage(weatherSummary).bgImage}) no-repeat fixed center;
   background-size: cover;
 `;

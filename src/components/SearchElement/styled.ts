@@ -3,16 +3,17 @@ import styled from 'styled-components';
 const SearchField = styled.p`
   outline: none;
   display: inline-block;
-  background: rgba(40, 44, 52, 0.8);
-  width: 100%;
+  background: ${({ theme }) => theme.transparentDark};
+  width: ${({ theme }) => theme.width[0]}%;
   border: none;
-  border-radius: 4px;
-  padding: 12px 20px;
+  border-radius: ${({ theme }) => theme.borderRadius[2]}px;
+  padding: ${({ theme }) => theme.padding[8]}px ${({ theme }) => theme.padding[5]}px;
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
+    ${({ theme }) => theme.boxShadow[1]}px;
   &:hover {
     cursor: pointer;
-    background: rgba(40, 44, 52, 1);
+    background: ${({ theme }) => theme.dark};
   }
 `;
 

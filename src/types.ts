@@ -74,3 +74,6 @@ export interface IErrorBoundaryProps {
 export interface IErrorBoundaryState {
   hasError: boolean;
 }
+export interface ILoginWrapper {
+  active: boolean;
+}
