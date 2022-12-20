@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   color: white;
   width: 300px;
   max-width: 500px;
-  max-height: 500px;
+  max-height: 170px;
   padding: 3px 7px;
   margin-right: 30px;
   background: rgba(255, 255, 255, 0.2);
@@ -14,7 +14,8 @@ const Wrapper = styled.div`
   font-weight: 700;
   @media (max-width: 1440px) {
     margin: auto;
-    overflow-y: auto;
+    width: auto;
+    height: auto;
   }
 `;
 

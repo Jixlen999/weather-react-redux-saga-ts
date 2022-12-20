@@ -13,14 +13,16 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 20px;
   @media (max-width: 1440px) {
+    height: 45%;
     flex-direction: column;
-    height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 10px;
   }
   @media (max-width: 568px) {
+    height: auto;
     padding-bottom: 50px;
     flex-direction: row;
+    overflow-y: none;
   }
 `;
 
