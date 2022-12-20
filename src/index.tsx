@@ -1,27 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import App from '@src/components/App';
-import rootReducer from './store/reducers/rootReducer';
-import rootSaga from './store/sagas/rootSaga';
+import store, { persistor } from './store';
 
 import GlobalStyle from './styled';
-
-const sagaMiddleware = createSagaMiddleware();
-const composeEnhancers = (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
-const store = createStore(rootReducer, enhancer);
-
-sagaMiddleware.run(rootSaga);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <Provider store={store}>
-    <GlobalStyle />
-    <App />
+    <PersistGate persistor={persistor}>
+      <GlobalStyle />
+      <App />
+    </PersistGate>
   </Provider>,
 );
