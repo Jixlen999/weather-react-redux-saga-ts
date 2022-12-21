@@ -8,6 +8,7 @@ export async function fetchLocationByIP() {
     .get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.REACT_APP_IPGEOLOCATION_API_KEY}`)
     .then(({ data }) => data)
     .then(({ city, country, latitude, longitude }) => ({ city, country, latitude, longitude }));
+  console.log(location);
   return location;
 }
 export async function fetchLocationByName(cityName: string) {
