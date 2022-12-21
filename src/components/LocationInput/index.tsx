@@ -16,11 +16,13 @@ function LocationInput() {
   const [search, setSearch] = useState<any[]>([]);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(() => {
-      dispatch(getCurrentLocation());
-      dispatch(getPlaceId());
-      setCurCity(city);
-    });
+    if (!localStorage.getItem('persist:weather')) {
+      navigator.geolocation.getCurrentPosition(() => {
+        dispatch(getCurrentLocation());
+        dispatch(getPlaceId());
+        setCurCity(city);
+      });
+    }
   }, [city, country, dispatch]);
 
   const fetchCities = (inputValue: any) => {
@@ -82,7 +84,7 @@ function LocationInput() {
         )}
       </div>
 
-      <Btn type="submit" onClick={clickHandler}>
+      <Btn type="submit" onClick={clickHandler} data-cy="cityInput">
         Enter
       </Btn>
     </Wrapper>
