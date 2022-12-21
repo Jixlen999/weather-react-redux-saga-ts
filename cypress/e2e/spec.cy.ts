@@ -25,5 +25,6 @@ describe('Tests', () => {
   it('Check if the page is not blank', () => {
     cy.visit('https://jixlen999.github.io/weather-react-redux-saga-ts/');
     cy.get('.sc-cwSeag').should('not.be.empty');
+    cy.get('.ijwWwp').should('not.be.empty');
   });
 });
