@@ -13,10 +13,8 @@ function Main() {
 
   return (
     <Wrapper weatherSummary={weatherSummary}>
-      <>
-        <DateAndLocationWrapper />
-        <Events />
-      </>
+      <DateAndLocationWrapper />
+      <Events />
       <Forecast />
     </Wrapper>
   );

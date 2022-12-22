@@ -13,7 +13,7 @@ function ForecastServiceSwitcher() {
     setActive(true);
     dispatch(setService('daily'));
   };
-  const hourlyClick = async () => {
+  const hourlyClick = () => {
     setActive(false);
     dispatch(setService('hourly'));
   };

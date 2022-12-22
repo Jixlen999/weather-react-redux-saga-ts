@@ -10,7 +10,6 @@ function HourlyForecast() {
   return (
     <>
       {hourlyWeather &&
-        hourlyWeather &&
         hourlyWeather.map(({ dt_txt, main, weather }: any) => {
           const { temp } = main;
           const { icon } = weather[0];

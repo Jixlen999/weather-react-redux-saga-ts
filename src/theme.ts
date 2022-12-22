@@ -20,7 +20,6 @@ const theme = {
   right: [10],
   top: [30, 10],
   scale: [1.1],
-
   transparentDark,
   transparentLight,
   boxShadowDark,

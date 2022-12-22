@@ -3,14 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import debounce from 'lodash.debounce';
 
+import apiKeys from '@src/constants/apiKeys';
+import paths from '@src/constants/apiPaths';
 import { getCurrentLocation, getPlaceId, getInputLocation } from '@store/actions/locationActions';
 import { RootState } from '@store/reducers/rootReducer';
-
-import { Input, Btn, Wrapper, SearchWrapper } from './styled';
 import SearchElement from '../SearchElement';
 
+import { Input, Btn, Wrapper, SearchWrapper } from './styled';
+
 function LocationInput() {
-  const dispatch = useDispatch<(arg: any) => any>();
+  const dispatch = useDispatch();
+  const { openweathermap } = paths;
+  const { openweathermapKey } = apiKeys;
   const { city, country } = useSelector((state: RootState) => state.location);
   const [curCity, setCurCity] = useState<string>('');
   const [search, setSearch] = useState<any[]>([]);
@@ -26,19 +30,15 @@ function LocationInput() {
   }, [city, country, dispatch]);
 
   const fetchCities = (inputValue: any) => {
-    axios
-      .get(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
-      )
-      .then(({ data }) => {
-        const citiesArray = data.map(({ name, lat, lon, country }: any) => ({
-          name,
-          latitude: lat,
-          longitude: lon,
-          country,
-        }));
-        setSearch(citiesArray);
-      });
+    axios.get(`${openweathermap}geo/1.0/direct?q=${inputValue}&limit=5&appid=${openweathermapKey}`).then(({ data }) => {
+      const citiesArray = data.map(({ name, lat, lon, country }: any) => ({
+        name,
+        latitude: lat,
+        longitude: lon,
+        country,
+      }));
+      setSearch(citiesArray);
+    });
   };
   const debouncedFetch = useCallback(debounce(fetchCities, 300), []);
 
