@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: ${({ theme }) => theme.gap[2]}px;
+  gap: ${({ theme }) => theme.gap[10]}px;
   @media ${devices.laptop} {
     flex-direction: row;
   }
@@ -19,20 +19,20 @@ export const Wrapper = styled.div`
 
 export const ServiceBtn = styled.div<IBtn>`
   text-align: center;
-  width: ${({ theme }) => theme.width[0]}%;
-  padding: ${({ theme }) => theme.padding[4]}px ${({ theme }) => theme.padding[7]}px;
-  font-size: ${({ theme }) => theme.fontSize[1]}px;
+  width: ${({ theme }) => theme.width[100]}%;
+  padding: ${({ theme }) => theme.padding[10]}px ${({ theme }) => theme.padding[15]}px;
+  font-size: ${({ theme }) => theme.fontSize[20]}px;
   display: inline-block;
   height: auto;
-  background: ${({ active, theme }) => (active ? theme.dark : theme.transparentLight)};
-  color: white;
-  border: ${({ theme }) => theme.border[0]}px solid ${({ theme }) => theme.white};
-  border-radius: ${({ theme }) => theme.borderRadius[2]}px;
+  background: ${({ active, theme }) => (active ? theme.colors.dark : theme.colors.transparentLight)};
+  color: ${({ theme }) => theme.colors.white};
+  border: ${({ theme }) => theme.border[2]}px solid ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius[4]}px;
   cursor: pointer;
-  transition: all ${({ theme }) => theme.transition[0]}s ease;
-  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
-    ${({ theme }) => theme.boxShadow[1]}px;
+  transition: all ${({ theme }) => theme.transition['0.2']}s ease;
+  box-shadow: ${({ theme }) => theme.colors.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[3]}px
+    ${({ theme }) => theme.boxShadow[8]}px;
   &:hover {
-    background-color: ${({ theme }) => theme.dark};
+    background-color: ${({ theme }) => theme.colors.dark};
   }
 `;

@@ -10,39 +10,39 @@ interface IButtonWrapper {
 
 export const Wrapper = styled.div<ILoginWrapper>`
   position: absolute;
-  right: ${({ theme }) => theme.right[0]}px;
-  top: ${({ theme }) => theme.top[0]}%;
-  border-radius: ${({ theme }) => theme.borderRadius[2]}px;
+  right: ${({ theme }) => theme.right[10]}px;
+  top: ${({ theme }) => theme.top[30]}%;
+  border-radius: ${({ theme }) => theme.borderRadius[4]}px;
   height: auto;
   display: flex;
   flex-direction: column;
-  background: ${({ theme }) => theme.transparentDark};
-  padding: ${({ theme }) => theme.padding[4]}px;
-  padding-top: ${({ theme }) => theme.padding[5]}px;
-  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
-    ${({ theme }) => theme.boxShadow[1]}px;
+  background: ${({ theme }) => theme.colors.transparentDark};
+  padding: ${({ theme }) => theme.padding[10]}px;
+  padding-top: ${({ theme }) => theme.padding[20]}px;
+  box-shadow: ${({ theme }) => theme.colors.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[3]}px
+    ${({ theme }) => theme.boxShadow[8]}px;
   @media ${devices.laptop} {
     width: auto;
-    padding: ${({ theme }) => theme.padding[4]}px;
+    padding: ${({ theme }) => theme.padding[10]}px;
   }
   @media ${devices.tablet} {
     flex-direction: column;
     height: ${({ active }: any) => (!active ? '45px' : 'auto')};
     width: auto;
-    top: ${({ theme }) => theme.top[1]}px;
-    padding: ${({ theme }) => theme.padding[4]}px;
+    top: ${({ theme }) => theme.top[10]}px;
+    padding: ${({ theme }) => theme.padding[10]}px;
     overflow: hidden;
-    z-index: ${({ theme }) => theme.zIndex[0]};
+    z-index: ${({ theme }) => theme.zIndex[100]};
   }
 `;
 
 export const ButtonWrapper = styled.div<IButtonWrapper>`
-  width: ${({ theme }) => theme.width[0]}px;
-  margin: ${({ theme }) => theme.margin[4]}px 0;
-  color: white;
+  width: ${({ theme }) => theme.width[100]}px;
+  margin: ${({ theme }) => theme.margin[10]}px 0;
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
   cursor: pointer;
-  transition: all ${({ theme }) => theme.transition[0]}s linear;
+  transition: all ${({ theme }) => theme.transition['0.2']}s linear;
   display: ${({ text, isLoggedIn }) => {
     if (text === 'Sign Out') {
       if (isLoggedIn) {
@@ -54,10 +54,10 @@ export const ButtonWrapper = styled.div<IButtonWrapper>`
   }};
 
   &:hover {
-    transform: scale(${({ theme }) => theme.scale[0]});
+    transform: scale(${({ theme }) => theme.scale['1.1']});
   }
   svg {
-    font-size: ${({ theme }) => theme.fontSize[2]}px;
+    font-size: ${({ theme }) => theme.fontSize[30]}px;
   }
 
   @media ${devices.laptop} {
@@ -66,26 +66,26 @@ export const ButtonWrapper = styled.div<IButtonWrapper>`
       display: none;
     }
     svg {
-      font-size: ${({ theme }) => theme.fontSize[7]}px;
+      font-size: ${({ theme }) => theme.fontSize[45]}px;
     }
   }
   @media ${devices.tablet} {
     svg {
-      font-size: ${({ theme }) => theme.fontSize[1]}px;
+      font-size: ${({ theme }) => theme.fontSize[20]}px;
     }
   }
 `;
 
 export const Menu = styled.div`
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
   display: none;
   svg {
-    font-size: ${({ theme }) => theme.fontSize[8]}px;
+    font-size: ${({ theme }) => theme.fontSize[25]}px;
   }
   cursor: pointer;
-  transition: all ${({ theme }) => theme.transition[0]}s linear;
+  transition: all ${({ theme }) => theme.transition['0.2']}s linear;
   &:hover {
-    transform: scale(${({ theme }) => theme.scale[0]});
+    transform: scale(${({ theme }) => theme.scale['1.1']});
   }
   @media ${devices.tablet} {
     display: block;

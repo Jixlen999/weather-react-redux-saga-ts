@@ -3,57 +3,57 @@ import styled from 'styled-components';
 import devices from '@constants/devices';
 
 export const Item = styled.div`
-  width: ${({ theme }) => theme.width[1]}px;
-  margin: ${({ theme }) => theme.margin[2]}px 0;
+  width: ${({ theme }) => theme.width[250]}px;
+  margin: ${({ theme }) => theme.margin[5]}px 0;
   display: flex;
   align-items: center;
   @media ${devices.laptop} {
     width: auto;
   }
   @media ${devices.tablet} {
-    width: ${({ theme }) => theme.width[0]}%;
+    width: ${({ theme }) => theme.width[100]}%;
   }
 `;
 
 export const Time = styled.span`
-  min-width: ${({ theme }) => theme.width[0]}px;
-  max-width: ${({ theme }) => theme.width[0]}px;
+  min-width: ${({ theme }) => theme.width[100]}px;
+  max-width: ${({ theme }) => theme.width[100]}px;
   text-align: center;
-  margin-right: ${({ theme }) => theme.margin[3]}px;
-  padding: ${({ theme }) => theme.padding[0]}px ${({ theme }) => theme.padding[1]}px;
-  background: ${({ theme }) => theme.transparentDark};
-  border-radius: ${({ theme }) => theme.borderRadius[0]}px;
-  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
-    ${({ theme }) => theme.boxShadow[1]}px;
+  margin-right: ${({ theme }) => theme.margin[30]}px;
+  padding: ${({ theme }) => theme.padding[3]}px ${({ theme }) => theme.padding[7]}px;
+  background: ${({ theme }) => theme.colors.transparentDark};
+  border-radius: ${({ theme }) => theme.borderRadius[15]}px;
+  box-shadow: ${({ theme }) => theme.colors.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[3]}px
+    ${({ theme }) => theme.boxShadow[8]}px;
   @media ${devices.laptop} {
-    min-width: ${({ theme }) => theme.width[2]}px;
+    min-width: ${({ theme }) => theme.width[150]}px;
   }
   @media ${devices.tablet} {
-    font-size: ${({ theme }) => theme.fontSize[5]}px;
+    font-size: ${({ theme }) => theme.fontSize[14]}px;
   }
   @media ${devices.largePhone} {
-    min-width: ${({ theme }) => theme.width[0]}px;
+    min-width: ${({ theme }) => theme.width[100]}px;
   }
 `;
 
 export const Summary = styled.span`
-  min-width: ${({ theme }) => theme.width[2]}px;
-  max-height: ${({ theme }) => theme.height[1]}px;
-  font-size: ${({ theme }) => theme.fontSize[5]}px;
-  padding: ${({ theme }) => theme.padding[0]}px ${({ theme }) => theme.padding[1]}px;
-  background: ${({ theme }) => theme.transparentDark};
-  border-radius: ${({ theme }) => theme.borderRadius[0]}px;
-  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
-    ${({ theme }) => theme.boxShadow[1]}px;
+  min-width: ${({ theme }) => theme.width[150]}px;
+  max-height: ${({ theme }) => theme.height[42]}px;
+  font-size: ${({ theme }) => theme.fontSize[14]}px;
+  padding: ${({ theme }) => theme.padding[3]}px ${({ theme }) => theme.padding[7]}px;
+  background: ${({ theme }) => theme.colors.transparentDark};
+  border-radius: ${({ theme }) => theme.borderRadius[15]}px;
+  box-shadow: ${({ theme }) => theme.colors.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[3]}px
+    ${({ theme }) => theme.boxShadow[8]}px;
   overflow: hidden;
   text-align: center;
   @media ${devices.laptop} {
-    min-width: ${({ theme }) => theme.width[2]}px;
-    height: ${({ theme }) => theme.height[2]}px;
+    min-width: ${({ theme }) => theme.width[150]}px;
+    height: ${({ theme }) => theme.height[28]}px;
   }
   @media ${devices.tablet} {
-    font-size: ${({ theme }) => theme.fontSize[5]}px;
-    height: ${({ theme }) => theme.height[3]}px;
-    width: ${({ theme }) => theme.width[0]}%;
+    font-size: ${({ theme }) => theme.fontSize[14]}px;
+    height: ${({ theme }) => theme.height[24]}px;
+    width: ${({ theme }) => theme.width[100]}%;
   }
 `;

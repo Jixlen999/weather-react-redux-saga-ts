@@ -6,16 +6,16 @@ import { IMainWrapper } from '@src/types';
 
 const Wrapper = styled.div<IMainWrapper>`
   position: relative;
-  width: ${({ theme }) => theme.width[10]}%;
-  height: ${({ theme }) => theme.height[8]}%;
+  width: ${({ theme }) => theme.width[80]}%;
+  height: ${({ theme }) => theme.height[80]}%;
   background: url(${({ weatherSummary }) => chooseBgImage(weatherSummary).mainImage}) no-repeat fixed center;
   background-size: cover;
-  box-shadow: ${({ theme }) => theme.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[0]}px
-    ${({ theme }) => theme.boxShadow[1]}px;
-  border-radius: ${({ theme }) => theme.borderRadius[3]}px;
+  box-shadow: ${({ theme }) => theme.colors.boxShadowDark} 0px ${({ theme }) => theme.boxShadow[3]}px
+    ${({ theme }) => theme.boxShadow[8]}px;
+  border-radius: ${({ theme }) => theme.borderRadius[5]}px;
   @media ${devices.tablet} {
-    width: ${({ theme }) => theme.width[0]}%;
-    height: ${({ theme }) => theme.height[0]}%;
+    width: ${({ theme }) => theme.width[100]}%;
+    height: ${({ theme }) => theme.height[100]}%;
     background: none;
     box-shadow: none;
     border-radius: 0;
