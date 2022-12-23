@@ -15,14 +15,6 @@ function Events() {
         {events.map((event) => (
           <EventItem key={event.id} event={event} />
         ))}
-        {/* {events.map((event) => {
-          let count = 0;
-          if (count <= 3) {
-            count++;
-            return <EventItem key={event.id} event={event} />;
-          }
-          return null;
-        })} */}
       </Wrapper>
     );
   }

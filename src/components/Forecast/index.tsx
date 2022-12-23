@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { currentWeatherSelector, locationSelector } from '@src/store/selectors';
+import paths from '@src/constants/apiPaths';
+import { RootState } from '@src/store/reducers/rootReducer';
 import { getCurrentWeather } from '@src/store/actions/weatherActions';
 import ForecastService from '../ForecastService';
 import ForecastServiceSwitcher from '../ForecastServiceSwitcher';
@@ -10,21 +11,24 @@ import { Wrapper, WeatherNow, FutureWeatherWrapper, Day, Temp, Icon, TempWrapper
 
 function Forecast() {
   const dispatch = useDispatch();
-  const { city } = useSelector(locationSelector);
-  const { icon, temperature } = useSelector(currentWeatherSelector);
+  const { meteosource } = paths;
+  const { location, curWeather } = useSelector((store: RootState) => ({
+    location: store.location,
+    curWeather: store.weather.currentWeather,
+  }));
+  const { city } = location;
+  const { icon, temperature } = curWeather;
 
   useEffect(() => {
-    (async () => {
-      if (city) {
-        dispatch(getCurrentWeather());
-      }
-    })();
+    if (city) {
+      dispatch(getCurrentWeather());
+    }
   }, [city, dispatch]);
 
   return (
     <Wrapper>
       <WeatherNow>
-        <Icon src={icon ? `https://www.meteosource.com/static/img/ico/weather/${icon}.svg` : ''} alt="weather icon" />
+        <Icon src={icon ? `${meteosource}static/img/ico/weather/${icon}.svg` : ''} alt="weather icon" />
         <TempWrapper>
           <Day>Today</Day>
           <Temp>{Math.round(Number(temperature))}°</Temp>

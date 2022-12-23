@@ -25,7 +25,7 @@ export async function fetchLocationByName(cityName: string) {
 // Fetching placeId for meteosource.com
 export async function fetchPlaceID(curLocation: string): Promise<string> {
   const placeId: string = await axios
-    .get(`${meteosource}find_places_prefix?text=${curLocation}&language=en&key=${meteosourceKey}`)
+    .get(`${meteosource}api/v1/free/find_places_prefix?text=${curLocation}&language=en&key=${meteosourceKey}`)
     .then(({ data }) => data[0].place_id);
   return placeId;
 }
@@ -33,7 +33,9 @@ export async function fetchPlaceID(curLocation: string): Promise<string> {
 // For weather saga
 export function fetchCurWeather(placeId: string) {
   const curWeather = axios
-    .get(`${meteosource}point?place_id=${placeId}&sections=current&language=en&units=auto&key=${meteosourceKey}`)
+    .get(
+      `${meteosource}api/v1/free/point?place_id=${placeId}&sections=current&language=en&units=auto&key=${meteosourceKey}`,
+    )
     .then(({ data }) => data.current)
     .then(({ icon_num, temperature, summary }) => ({ icon: icon_num, temperature, summary }));
   return curWeather;
@@ -41,7 +43,9 @@ export function fetchCurWeather(placeId: string) {
 
 export function fetchDailyWeather(placeId: string): Promise<any> {
   const dailyWeather = axios
-    .get(`${meteosource}point?place_id=${placeId}&sections=daily&language=en&units=auto&key=${meteosourceKey}`)
+    .get(
+      `${meteosource}api/v1/free/point?place_id=${placeId}&sections=daily&language=en&units=auto&key=${meteosourceKey}`,
+    )
     .then(({ data }) => data.daily.data.splice(1)); // Отрезаем первый день, т.к. он показан в "TODAY"
   return dailyWeather;
 }

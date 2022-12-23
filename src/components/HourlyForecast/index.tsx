@@ -1,12 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import paths from '@src/constants/apiPaths';
 import formatTime from '@src/utils/formatTime';
 import { weatherSelector } from '@src/store/selectors';
 import WeatherItem from '../WeatherItem';
 
 function HourlyForecast() {
   const { hourlyWeather } = useSelector(weatherSelector);
+  const { openweathermapIcons } = paths;
+
   return (
     <>
       {hourlyWeather &&
@@ -18,7 +21,7 @@ function HourlyForecast() {
           return (
             <WeatherItem
               temperature={temp}
-              iconSrc={icon && `http://openweathermap.org/img/wn/${icon}@2x.png`}
+              iconSrc={icon && `${openweathermapIcons}${icon}@2x.png`}
               time={time}
               key={time}
             />

@@ -19,13 +19,15 @@ export const Input = styled.input`
   }
 `;
 
-export const SearchWrapper = styled.div`
+export const SearchVariants = styled.div`
   position: absolute;
   width: ${({ theme }) => theme.width[6]}px;
   z-index: ${({ theme }) => theme.zIndex[0]};
 `;
 
-export const Btn = styled.button`
+export const SearchWrapper = styled.div``;
+
+export const SubmitBtn = styled.button`
   display: inline-block;
   width: ${({ theme }) => theme.width[9]}px;
   height: ${({ theme }) => theme.height[0]}%;

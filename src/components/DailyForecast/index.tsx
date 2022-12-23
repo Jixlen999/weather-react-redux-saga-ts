@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import paths from '@constants/apiPaths';
 import { weatherSelector } from '@src/store/selectors';
 import WeatherItem from '../WeatherItem';
 
 function DailyForecast() {
   const { dailyWeather } = useSelector(weatherSelector);
+  const { meteosource } = paths;
 
   return (
     <>
@@ -16,7 +18,7 @@ function DailyForecast() {
           return (
             <WeatherItem
               temperature={temperature}
-              iconSrc={icon && `https://www.meteosource.com/static/img/ico/weather/${icon}.svg`}
+              iconSrc={icon && `${meteosource}static/img/ico/weather/${icon}.svg`}
               time={weekDay}
               key={day}
             />

@@ -20,7 +20,8 @@
     "@typescript-eslint/naming-convention": "off",
     "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-shadow": "off",
-    "react/jsx-no-useless-fragment": "off"
+    "react/jsx-no-useless-fragment": "off",
+    "react/no-array-index-key": "off"
   },
   "settings": {
     "import/resolver": {

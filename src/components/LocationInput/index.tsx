@@ -6,16 +6,16 @@ import debounce from 'lodash.debounce';
 import apiKeys from '@src/constants/apiKeys';
 import paths from '@src/constants/apiPaths';
 import { getCurrentLocation, getPlaceId, getInputLocation } from '@store/actions/locationActions';
-import { RootState } from '@store/reducers/rootReducer';
+import { locationSelector } from '@src/store/selectors';
 import SearchElement from '../SearchElement';
 
-import { Input, Btn, Wrapper, SearchWrapper } from './styled';
+import { Input, SubmitBtn, Wrapper, SearchWrapper, SearchVariants } from './styled';
 
 function LocationInput() {
   const dispatch = useDispatch();
   const { openweathermap } = paths;
   const { openweathermapKey } = apiKeys;
-  const { city, country } = useSelector((state: RootState) => state.location);
+  const { city, country } = useSelector(locationSelector);
   const [curCity, setCurCity] = useState<string>('');
   const [search, setSearch] = useState<any[]>([]);
 
@@ -52,7 +52,7 @@ function LocationInput() {
     setSearch([]);
   };
 
-  const enterHandler = (e: { keyCode: number }) => {
+  const enterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
       clickHandler();
     }
@@ -66,7 +66,7 @@ function LocationInput() {
 
   return (
     <Wrapper>
-      <div>
+      <SearchWrapper>
         <Input
           placeholder="Enter the city"
           value={curCity}
@@ -76,17 +76,17 @@ function LocationInput() {
           data-cy="cityInput"
         />
         {search.length > 0 && (
-          <SearchWrapper>
-            {search.map((el) => (
-              <SearchElement key={el.latitude + el.longitude} element={el} setCurCity={setCurCity} />
+          <SearchVariants>
+            {search.map((el, id) => (
+              <SearchElement key={el.latitude + id} element={el} setCurCity={setCurCity} />
             ))}
-          </SearchWrapper>
+          </SearchVariants>
         )}
-      </div>
+      </SearchWrapper>
 
-      <Btn type="submit" onClick={clickHandler} data-cy="cityInput">
+      <SubmitBtn type="submit" onClick={clickHandler} data-cy="cityInput">
         Enter
-      </Btn>
+      </SubmitBtn>
     </Wrapper>
   );
 }

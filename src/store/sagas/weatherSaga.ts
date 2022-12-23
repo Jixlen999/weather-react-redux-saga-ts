@@ -3,10 +3,10 @@ import { call, select, put, takeEvery } from 'redux-saga/effects';
 import { fetchCurWeather, fetchDailyWeather, fetchHourlyWeather } from '@src/api';
 import { ICurrentWeather } from '@src/types';
 import { GET_CURRENT_WEATHER, setCurrentWeather, setDailyWeather, setHourlyWeather } from '../actions/weatherActions';
-import { RootState } from '../reducers/rootReducer';
+import { locationSelector } from '../selectors';
 
 function* weatherWorker() {
-  const { placeId, latitude, longitude } = yield select((store: RootState) => store.location);
+  const { placeId, latitude, longitude } = yield select(locationSelector);
   const curWeather: ICurrentWeather = yield call(fetchCurWeather, placeId);
   yield put(setCurrentWeather(curWeather));
 
