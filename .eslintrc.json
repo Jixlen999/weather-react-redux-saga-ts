@@ -16,6 +16,7 @@
     "@typescript-eslint/default-param-last": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/no-array-index-key": "off",
+    "@typescript-eslint/naming-convention": "off",
     "react/jsx-no-useless-fragment": "off"
   },
   "settings": {

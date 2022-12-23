@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { weatherSelector } from '@store/selectors';
 import paths from '@constants/apiPaths';
 import WeatherItem from '@components/WeatherItem';
+import { IDailyWeather } from '@src/types';
 
 function DailyForecast() {
   const { dailyWeather } = useSelector(weatherSelector);
@@ -12,8 +13,7 @@ function DailyForecast() {
   return (
     <>
       {dailyWeather &&
-        dailyWeather.map(({ day, all_day }: any) => {
-          const { temperature, icon } = all_day;
+        dailyWeather.map(({ day, temperature, icon }: IDailyWeather) => {
           const weekDay = new Date(day).toString().slice(0, 3); // Отрезаем первые 3 символа, т.к. они представляют день недели
           return (
             <WeatherItem

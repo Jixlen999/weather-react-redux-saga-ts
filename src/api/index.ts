@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import paths from '@src/constants/apiPaths';
 import apiKeys from '@src/constants/apiKeys';
+import { ICities, IDailyWeather, IDayItem, IHourlyWeather } from '@src/types';
 
 const { ipgeolocation, openweathermap, meteosource } = paths;
 const { openweathermapKey, meteosourceKey, ipgeolocationKey } = apiKeys;
@@ -25,7 +26,7 @@ export async function fetchLocationByName(cityName: string) {
 
 // Fetching placeId for meteosource.com
 export async function fetchPlaceID(curLocation: string): Promise<string> {
-  const placeId: string = await axios
+  const placeId = await axios
     .get(`${meteosource}api/v1/free/find_places_prefix?text=${curLocation}&language=en&key=${meteosourceKey}`)
     .then(({ data }) => data[0].place_id);
   return placeId;
@@ -42,27 +43,55 @@ export function fetchCurWeather(placeId: string) {
   return curWeather;
 }
 
-export function fetchDailyWeather(placeId: string): Promise<any> {
+export function fetchDailyWeather(placeId: string): Promise<IDailyWeather> {
   const dailyWeather = axios
     .get(
       `${meteosource}api/v1/free/point?place_id=${placeId}&sections=daily&language=en&units=auto&key=${meteosourceKey}`,
     )
-    .then(({ data }) => data.daily.data.splice(1)); // Отрезаем первый день, т.к. он показан в "TODAY"
+    .then(({ data }) => data.daily.data.splice(1)) // Отрезаем первый день, т.к. он показан в "TODAY"
+    .then((days) =>
+      days.map((dayItem: IDayItem) => {
+        const {
+          day,
+          all_day: { icon, temperature },
+        } = dayItem;
+        return { day, icon, temperature };
+      }),
+    );
   return dailyWeather;
 }
 
-export function fetchHourlyWeather(latitude: number | string, longitude: number | string) {
+interface IHoursItem {
+  dt_txt: string;
+  main: { temp: number };
+  weather: { 0: { icon: string } };
+}
+
+export function fetchHourlyWeather(latitude: number | string, longitude: number | string): Promise<IHourlyWeather[]> {
   const hourlyWeather = axios
     .get(`${openweathermap}data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${openweathermapKey}`)
     .then(({ data }) => data.list)
-    .then((data) => data.splice(1, 6));
+    .then((list) => list.splice(1, 6))
+    .then((hours) =>
+      hours.map((hoursItem: IHoursItem) => {
+        const {
+          dt_txt,
+          main: { temp },
+          weather: {
+            0: { icon },
+          },
+        } = hoursItem;
+        return { date: dt_txt, temp, icon };
+      }),
+    );
   return hourlyWeather;
 }
 
 // For LocationInput
-export function fetchCities(inputValue: any, setSearch: (arg: any) => void) {
+
+export function fetchCities(inputValue: string, setSearch: (arg: ICities[]) => void) {
   axios.get(`${openweathermap}geo/1.0/direct?q=${inputValue}&limit=5&appid=${openweathermapKey}`).then(({ data }) => {
-    const citiesArray = data.map(({ name, lat, lon, country }: any) => ({
+    const citiesArray = data.map(({ name, lat, lon, country }: ICities) => ({
       name,
       latitude: lat,
       longitude: lon,

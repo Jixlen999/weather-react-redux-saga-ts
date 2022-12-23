@@ -5,6 +5,7 @@ import paths from '@constants/apiPaths';
 import formatTime from '@utils/formatTime';
 import { weatherSelector } from '@store/selectors';
 import WeatherItem from '@components/WeatherItem';
+import { IHourlyWeather } from '@src/types';
 
 function HourlyForecast() {
   const { hourlyWeather } = useSelector(weatherSelector);
@@ -13,10 +14,8 @@ function HourlyForecast() {
   return (
     <>
       {hourlyWeather &&
-        hourlyWeather.map(({ dt_txt, main, weather }: any) => {
-          const { temp } = main;
-          const { icon } = weather[0];
-          const time = formatTime(dt_txt);
+        hourlyWeather.map(({ date, temp, icon }: IHourlyWeather) => {
+          const time = formatTime(date);
 
           return (
             <WeatherItem

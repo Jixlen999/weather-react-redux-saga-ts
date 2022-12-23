@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 
 import { fetchCities } from '@src/api';
+import { ICities } from '@src/types';
 import { getCurrentLocation, getPlaceId, getInputLocation } from '@store/actions/locationActions';
 import { locationSelector } from '@store/selectors';
 import isNotPersisted from '@utils/checkPersist';
@@ -14,7 +15,7 @@ function LocationInput() {
   const dispatch = useDispatch();
   const { city, country } = useSelector(locationSelector);
   const [currentCity, setCurrentCity] = useState('');
-  const [search, setSearch] = useState<any[]>([]);
+  const [search, setSearch] = useState<ICities[]>([]);
 
   useEffect(() => {
     if (isNotPersisted()) {
@@ -64,7 +65,7 @@ function LocationInput() {
         {search.length > 0 && (
           <SearchVariants>
             {search.map((el, id) => (
-              <SearchElement key={el.latitude + id} element={el} setCurrentCity={setCurrentCity} />
+              <SearchElement key={id} element={el} setCurrentCity={setCurrentCity} />
             ))}
           </SearchVariants>
         )}

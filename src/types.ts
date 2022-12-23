@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { GET_LOCATION_SUCCESS, SET_PLACE_ID } from './store/actions/locationActions';
+import { GET_LOCATION_SUCCESS, SET_PLACE_ID } from '@store/actions/locationActions';
 
 export type Service = 'daily' | 'hourly';
 
@@ -64,9 +64,33 @@ export interface ICurrentWeatherAction {
   };
 }
 
+export interface IDailyWeather {
+  day: string;
+  icon: string;
+  temperature: number | string;
+}
+
+export interface IHourlyWeather {
+  date: string;
+  temp: number;
+  icon: string;
+}
+
+export interface IDayItem {
+  day: string;
+  all_day: { icon: string; temperature: number | string };
+}
+
+export interface ICities {
+  name: string;
+  lat: number;
+  lon: number;
+  country: string;
+}
+
 export interface IDailyWeatherAction {
   type: 'SET_DAILY_WEATHER';
-  payload: any[];
+  payload: IDailyWeather[];
 }
 
 export interface IHourlyWeatherAction {
