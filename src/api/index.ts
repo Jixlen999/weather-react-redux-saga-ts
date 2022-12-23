@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import paths from '@src/constants/apiPaths';
-import apiKeys from '@src/constants/apiKeys';
-import { ICities, IDailyWeather, IDayItem, IHourlyWeather } from '@src/types';
+import paths from '@constants/apiPaths';
+import apiKeys from '@constants/apiKeys';
+import { ICities, IDailyWeather, IDayItem, IHourlyWeather, IHoursItem } from '@src/types';
 
 const { ipgeolocation, openweathermap, meteosource } = paths;
 const { openweathermapKey, meteosourceKey, ipgeolocationKey } = apiKeys;
@@ -59,12 +59,6 @@ export function fetchDailyWeather(placeId: string): Promise<IDailyWeather> {
       }),
     );
   return dailyWeather;
-}
-
-interface IHoursItem {
-  dt_txt: string;
-  main: { temp: number };
-  weather: { 0: { icon: string } };
 }
 
 export function fetchHourlyWeather(latitude: number | string, longitude: number | string): Promise<IHourlyWeather[]> {

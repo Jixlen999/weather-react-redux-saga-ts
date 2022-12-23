@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 import { eventsSelector } from '@store/selectors';
+import { IResult, IResultItem } from '@src/types';
 import googleButtons from '@constants/googleButtons';
 import config from '@constants/googleConfig';
 import { storeEvents, clearEvents } from '@store/actions/eventsActions';
@@ -38,10 +39,8 @@ function LoginWrapper() {
       toast('You need to sign in before fetching events!');
     } else if (events.length === 0) {
       setIsLoggedIn(true);
-      apiCalendar.listUpcomingEvents(3).then(({ result }: any) => {
-        result.items.forEach((el: any) => {
-          dispatch(storeEvents(el));
-        });
+      apiCalendar.listUpcomingEvents(3).then(({ result: { items } }: IResult) => {
+        items.forEach(({ summary, start: { dateTime } }: IResultItem) => dispatch(storeEvents({ summary, dateTime })));
       });
     }
   };

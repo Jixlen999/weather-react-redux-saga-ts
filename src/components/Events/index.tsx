@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { eventsSelector } from '@store/selectors';
 import EventItem from '@components/EventItem';
+import { IEvent } from '@src/types';
 
 import Wrapper from './styled';
 
@@ -12,8 +13,8 @@ function Events() {
   if (events.length > 0) {
     return (
       <Wrapper>
-        {events.map((event) => (
-          <EventItem key={event.id} event={event} />
+        {events.map((event: IEvent, index) => (
+          <EventItem key={index} event={event} />
         ))}
       </Wrapper>
     );

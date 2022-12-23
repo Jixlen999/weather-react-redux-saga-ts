@@ -4,11 +4,20 @@ import { GET_LOCATION_SUCCESS, SET_PLACE_ID } from '@store/actions/locationActio
 export type Service = 'daily' | 'hourly';
 
 export interface IEventsState {
-  events: any[];
+  events: IEvent[];
 }
-export interface IEventsAction {
+export interface IEvent {
+  summary: string;
+  dateTime: string;
+}
+
+export interface IEventAction {
   type: string;
-  events: any[];
+  payload?: IEvent;
+}
+
+export interface IEventItemProps {
+  event: IEvent;
 }
 
 export interface ILocationState {
@@ -33,6 +42,15 @@ export interface ILocationAction {
 export interface IPlaceIdAction {
   type: typeof SET_PLACE_ID;
   payload: string;
+}
+
+export interface IResultItem {
+  summary: string;
+  start: { dateTime: string };
+}
+
+export interface IResult {
+  result: { items: IResultItem[] };
 }
 
 export interface IServiceState {
@@ -118,4 +136,10 @@ export interface IBtn {
 }
 export interface IMainWrapper {
   weatherSummary: string;
+}
+
+export interface IHoursItem {
+  dt_txt: string;
+  main: { temp: number };
+  weather: { 0: { icon: string } };
 }
