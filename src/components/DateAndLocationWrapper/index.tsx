@@ -13,7 +13,7 @@ function DateAndLocationWrapper() {
     <DateAndCityLayout>
       <CurrentDate />
       <Location>
-        <City>{city}</City>
+        <City data-cy="currentCity">{city}</City>
         <Country>{country}</Country>
       </Location>
     </DateAndCityLayout>

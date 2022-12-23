@@ -26,6 +26,7 @@ function ForecastServiceSwitcher() {
           key={text}
           active={text === 'Daily' ? active : !active}
           onClick={text === 'Daily' ? dailyClick : hourlyClick}
+          data-cy={text === 'Daily' ? 'dailyBtn' : 'hourlyBtn'}
         >
           {text}
         </ServiceBtn>

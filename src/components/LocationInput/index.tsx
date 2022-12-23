@@ -70,7 +70,7 @@ function LocationInput() {
         )}
       </SearchWrapper>
 
-      <SubmitBtn type="submit" onClick={handleClick} data-cy="cityInput">
+      <SubmitBtn type="submit" onClick={handleClick} data-cy="searchBtn">
         Enter
       </SubmitBtn>
     </Wrapper>

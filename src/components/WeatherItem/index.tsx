@@ -9,7 +9,7 @@ function WeatherItem({ temperature, time, iconSrc }: IWeatherItemProps) {
   const memoizedTemperature = useMemo(() => formatTemperature(temperature), [temperature]);
   return (
     <Item>
-      <WeekDayOrTime>{time}</WeekDayOrTime>
+      <WeekDayOrTime data-cy="weekDayOrTime">{time}</WeekDayOrTime>
       <Icon src={iconSrc} alt="weather icon" />
       <Temperature>{memoizedTemperature}°</Temperature>
     </Item>
