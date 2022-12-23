@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Btn = styled.div<IBtn>`
+export const ServiceBtn = styled.div<IBtn>`
   text-align: center;
   width: ${({ theme }) => theme.width[0]}%;
   padding: ${({ theme }) => theme.padding[4]}px ${({ theme }) => theme.padding[7]}px;

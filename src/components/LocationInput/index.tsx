@@ -5,25 +5,26 @@ import debounce from 'lodash.debounce';
 import { fetchCities } from '@src/api';
 import { getCurrentLocation, getPlaceId, getInputLocation } from '@store/actions/locationActions';
 import { locationSelector } from '@src/store/selectors';
-import SearchElement from '../SearchElement';
+import isNotPersisted from '@src/utils/checkPersist';
+import SearchElement from '@components/SearchElement';
 
 import { Input, SubmitBtn, Wrapper, SearchWrapper, SearchVariants } from './styled';
 
 function LocationInput() {
   const dispatch = useDispatch();
   const { city, country } = useSelector(locationSelector);
-  const [curCity, setCurCity] = useState<string>('');
+  const [curCity, setCurCity] = useState('');
   const [search, setSearch] = useState<any[]>([]);
 
   useEffect(() => {
-    if (!localStorage.getItem('persist:weather')) {
+    if (isNotPersisted()) {
       navigator.geolocation.getCurrentPosition(() => {
         dispatch(getCurrentLocation());
         dispatch(getPlaceId());
-        setCurCity(city);
+        setCurCity('');
       });
     }
-  }, [city, country, dispatch]);
+  }, [city, country]);
 
   const debouncedFetch = useCallback(debounce(fetchCities, 300), []);
 

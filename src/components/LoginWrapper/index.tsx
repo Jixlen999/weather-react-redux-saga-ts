@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import ApiCalendar from 'react-google-calendar-api';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +16,7 @@ function LoginWrapper() {
   const dispatch = useDispatch();
   const events = useSelector(eventsSelector);
   const [active, setActive] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const apiCalendar = new ApiCalendar(config);
 
   const loginClick = () => {
@@ -27,6 +27,7 @@ function LoginWrapper() {
     if (!gapi.client.getToken()) {
       toast('You are not signed in!');
     } else {
+      setIsLoggedIn(false);
       apiCalendar.handleSignoutClick();
       dispatch(clearEvents());
     }
@@ -36,6 +37,7 @@ function LoginWrapper() {
     if (!gapi.client.getToken()) {
       toast('You need to sign in before fetching events!');
     } else if (events.length === 0) {
+      setIsLoggedIn(true);
       apiCalendar.listUpcomingEvents(3).then(({ result }: any) => {
         result.items.forEach((el: any) => {
           dispatch(storeEvents(el));
@@ -48,12 +50,15 @@ function LoginWrapper() {
     switch (text) {
       case 'Sign In':
         loginClick();
+        setActive(!active);
         break;
       case 'Show Events':
         showEvents();
+        setActive(!active);
         break;
       case 'Sign Out':
         logoutClick();
+        setActive(!active);
         break;
       default:
         break;
@@ -66,7 +71,7 @@ function LoginWrapper() {
         <AiOutlineMenu />
       </Menu>
       {googleButtons.map(({ text, icon }) => (
-        <ButtonWrapper key={text} onClick={handleClick(text)}>
+        <ButtonWrapper key={text} onClick={handleClick(text)} text={text} isLoggedIn={isLoggedIn}>
           {icon}
           <p>{text}</p>
         </ButtonWrapper>

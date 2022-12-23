@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import { ILoginWrapper } from '@src/types';
 import devices from '@src/constants/devices';
 
+interface IButtonWrapper {
+  isLoggedIn: boolean;
+  text: string;
+}
+
 export const Wrapper = styled.div<ILoginWrapper>`
   position: absolute;
   right: ${({ theme }) => theme.right[0]}px;
@@ -31,13 +36,23 @@ export const Wrapper = styled.div<ILoginWrapper>`
   }
 `;
 
-export const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div<IButtonWrapper>`
   width: ${({ theme }) => theme.width[0]}px;
   margin: ${({ theme }) => theme.margin[4]}px 0;
   color: white;
   text-align: center;
   cursor: pointer;
   transition: all ${({ theme }) => theme.transition[0]}s linear;
+  display: ${({ text, isLoggedIn }) => {
+    if (text === 'Sign Out') {
+      if (isLoggedIn) {
+        return 'block';
+      }
+      return 'none';
+    }
+    return 'block';
+  }};
+
   &:hover {
     transform: scale(${({ theme }) => theme.scale[0]});
   }

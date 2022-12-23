@@ -13,15 +13,10 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "linebreak-style": ["error", "windows"],
-    "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/default-param-last": "off",
-    "react/button-has-type": "off",
-    "no-plusplus": "off",
-    "@typescript-eslint/naming-convention": "off",
     "react-hooks/exhaustive-deps": "off",
-    "@typescript-eslint/no-shadow": "off",
-    "react/jsx-no-useless-fragment": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "react/jsx-no-useless-fragment": "off"
   },
   "settings": {
     "import/resolver": {

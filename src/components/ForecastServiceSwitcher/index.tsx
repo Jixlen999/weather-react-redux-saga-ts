@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { setService } from '@store/actions/serviceSwitcherActions';
+import serviceSwitchers from '@src/constants/serviceSwitchers';
 
-import { Btn, Wrapper } from './styled';
+import { ServiceBtn, Wrapper } from './styled';
 
 function ForecastServiceSwitcher() {
   const dispatch = useDispatch();
@@ -20,12 +21,15 @@ function ForecastServiceSwitcher() {
 
   return (
     <Wrapper>
-      <Btn active={active} onClick={dailyClick}>
-        Daily
-      </Btn>
-      <Btn active={!active} onClick={hourlyClick}>
-        Hourly
-      </Btn>
+      {serviceSwitchers.map(({ text }) => (
+        <ServiceBtn
+          key={text}
+          active={text === 'Daily' ? active : !active}
+          onClick={text === 'Daily' ? dailyClick : hourlyClick}
+        >
+          {text}
+        </ServiceBtn>
+      ))}
     </Wrapper>
   );
 }
