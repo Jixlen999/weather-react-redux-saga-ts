@@ -27,23 +27,23 @@ function LocationInput() {
 
   const debouncedFetch = useCallback(debounce(fetchCities, 300), []);
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurCity(e.target.value);
-    debouncedFetch(e.target.value, setSearch);
+  const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
+    setCurCity(value);
+    debouncedFetch(value, setSearch);
   };
 
-  const clickHandler = () => {
+  const handleClick = () => {
     dispatch(getInputLocation(curCity));
     setSearch([]);
   };
 
-  const enterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
-      clickHandler();
+      handleClick();
     }
   };
 
-  const blurHandler = () => {
+  const handleBlur = () => {
     setTimeout(() => {
       setSearch([]);
     }, 300);
@@ -55,9 +55,9 @@ function LocationInput() {
         <Input
           placeholder="Enter the city"
           value={curCity}
-          onChange={changeHandler}
-          onKeyDown={enterHandler}
-          onBlur={blurHandler}
+          onChange={handleChange}
+          onKeyDown={handleEnter}
+          onBlur={handleBlur}
           data-cy="cityInput"
         />
         {search.length > 0 && (
@@ -69,7 +69,7 @@ function LocationInput() {
         )}
       </SearchWrapper>
 
-      <SubmitBtn type="submit" onClick={clickHandler} data-cy="cityInput">
+      <SubmitBtn type="submit" onClick={handleClick} data-cy="cityInput">
         Enter
       </SubmitBtn>
     </Wrapper>

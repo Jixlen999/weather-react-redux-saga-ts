@@ -44,7 +44,7 @@ function LoginWrapper() {
     }
   };
 
-  const clickHandler = (text: string) => () => {
+  const handleClick = (text: string) => () => {
     switch (text) {
       case 'Sign In':
         loginClick();
@@ -66,7 +66,7 @@ function LoginWrapper() {
         <AiOutlineMenu />
       </Menu>
       {googleButtons.map(({ text, icon }) => (
-        <ButtonWrapper key={text} onClick={clickHandler(text)}>
+        <ButtonWrapper key={text} onClick={handleClick(text)}>
           {icon}
           <p>{text}</p>
         </ButtonWrapper>

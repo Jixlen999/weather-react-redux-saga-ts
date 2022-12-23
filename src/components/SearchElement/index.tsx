@@ -5,11 +5,11 @@ import SearchField from './styled';
 function SearchElement({ element, setCurCity }: any) {
   const { name, country } = element;
 
-  const searchClickHandler = () => {
+  const handleClick = () => {
     setCurCity(name);
   };
   return (
-    <SearchField onClick={searchClickHandler}>
+    <SearchField onClick={handleClick}>
       {name}, {country}
     </SearchField>
   );
