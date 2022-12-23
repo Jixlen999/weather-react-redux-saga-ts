@@ -2,7 +2,7 @@ import { Service } from '@src/types';
 
 export const SET_SERVICE = 'SET_SERVICE';
 
-export const setService = (service: Service) => ({
+export const setService = (payload: Service) => ({
   type: SET_SERVICE,
-  service,
+  payload,
 });

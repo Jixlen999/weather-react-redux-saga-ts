@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { GET_LOCATION_SUCCESS, SET_PLACE_ID } from './store/actions/locationActions';
 
 export type Service = 'daily' | 'hourly';
 
@@ -17,15 +18,21 @@ export interface ILocationState {
   latitude: number | null;
   longitude: number | null;
 }
+
+export interface ILocation {
+  city: string;
+  country: string;
+  latitude: number;
+  longitude: number;
+}
+
 export interface ILocationAction {
-  type: string;
-  location?: {
-    city: string;
-    country: string;
-    latitude: number;
-    longitude: number;
-  };
-  placeId?: '';
+  type: typeof GET_LOCATION_SUCCESS;
+  payload: ILocation;
+}
+export interface IPlaceIdAction {
+  type: typeof SET_PLACE_ID;
+  payload: string;
 }
 
 export interface IServiceState {
@@ -34,7 +41,7 @@ export interface IServiceState {
 
 export interface IServiceAction {
   type: string;
-  service: string;
+  payload: string;
 }
 
 export interface ICurrentWeather {
@@ -52,13 +59,6 @@ export interface IWeatherAction {
   currentWeather?: ICurrentWeather;
   dailyWeather?: any;
   hourlyWeather?: any;
-}
-
-export interface ILocation {
-  city: string;
-  country: string;
-  latitude: number;
-  longitude: number;
 }
 
 // Others

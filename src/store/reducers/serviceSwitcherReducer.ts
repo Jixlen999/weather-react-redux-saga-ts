@@ -5,10 +5,13 @@ const initialState: IServiceState = {
   service: 'daily',
 };
 
-const serviceSwitcherReducer = (state: IServiceState = initialState, action: IServiceAction): IServiceState => {
-  switch (action.type) {
+const serviceSwitcherReducer = (
+  state: IServiceState = initialState,
+  { type, payload }: IServiceAction,
+): IServiceState => {
+  switch (type) {
     case SET_SERVICE: {
-      return { ...state, service: action.service as Service };
+      return { ...state, service: payload as Service };
     }
     default:
       return state;

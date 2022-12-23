@@ -18,7 +18,8 @@ export async function fetchLocationByName(cityName: string) {
   const location = await axios
     .get(`${openweathermap}geo/1.0/direct?q=${cityName}&limit=5&appid=${openweathermapKey}`)
     .then(({ data }) => data[0])
-    .then(({ name, country, lat, lon }) => ({ city: name, country, latitude: lat, longitude: lon }));
+    .then(({ name, country, lat, lon }) => ({ city: name, country, latitude: lat, longitude: lon }))
+    .catch(() => null);
   return location;
 }
 

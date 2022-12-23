@@ -37,8 +37,8 @@ function LocationInput() {
     setSearch([]);
   };
 
-  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.keyCode === 13) {
+  const handleEnter = ({ keyCode }: React.KeyboardEvent<HTMLInputElement>) => {
+    if (keyCode === 13) {
       handleClick();
     }
   };

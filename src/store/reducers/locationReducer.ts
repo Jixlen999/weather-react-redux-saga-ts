@@ -1,4 +1,4 @@
-import { ILocationAction, ILocationState } from '@src/types';
+import { ILocationAction, IPlaceIdAction, ILocationState } from '@src/types';
 import { GET_LOCATION_SUCCESS, SET_PLACE_ID } from '../actions/locationActions';
 
 const initialState: ILocationState = {
@@ -9,14 +9,14 @@ const initialState: ILocationState = {
   longitude: 0.12574,
 };
 
-const locationReducer = (state: ILocationState = initialState, action: ILocationAction) => {
-  switch (action.type) {
+const locationReducer = (state: ILocationState = initialState, { type, payload }: ILocationAction | IPlaceIdAction) => {
+  switch (type) {
     case GET_LOCATION_SUCCESS: {
-      const { city, country, latitude, longitude } = action.location!;
+      const { city, country, latitude, longitude } = payload;
       return { ...state, city, country, latitude, longitude };
     }
     case SET_PLACE_ID:
-      return { ...state, placeId: action.placeId };
+      return { ...state, placeId: payload };
     default:
       return state;
   }

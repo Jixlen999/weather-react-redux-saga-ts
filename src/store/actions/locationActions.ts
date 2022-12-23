@@ -6,9 +6,9 @@ export const SET_PLACE_ID = 'SET_PLACE_ID';
 export const GET_PLACE_ID = 'GET_PLACE_ID';
 export const GET_INPUT_LOCATION = 'GET_INPUT_LOCATION';
 
-export const setPlaceId = (placeId: string) => ({
+export const setPlaceId = (payload: string) => ({
   type: SET_PLACE_ID,
-  placeId,
+  payload,
 });
 
 export const getPlaceId = () => ({
@@ -19,12 +19,12 @@ export const getCurrentLocation = () => ({
   type: GET_CURRENT_LOCATION,
 });
 
-export const getInputLocation = (cityName: string) => ({
+export const getInputLocation = (payload: string) => ({
   type: GET_INPUT_LOCATION,
-  cityName,
+  payload,
 });
 
-export const getLocationSuccess = (location: ILocation) => ({
+export const getLocationSuccess = (payload: ILocation) => ({
   type: GET_LOCATION_SUCCESS,
-  location,
+  payload,
 });

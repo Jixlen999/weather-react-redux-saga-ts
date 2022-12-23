@@ -5,10 +5,10 @@ const InitialState: IEventsState = {
   events: [],
 };
 
-const eventsReducer = (state: IEventsState = InitialState, { type, events }: any) => {
+const eventsReducer = (state: IEventsState = InitialState, { type, payload }: any) => {
   switch (type) {
     case SET_EVENTS:
-      return { ...state, events: [...state.events, events] };
+      return { ...state, events: [...state.events, payload] };
     case CLEAR_EVENTS:
       return { ...state, events: [] };
     default:
