@@ -57,3 +57,16 @@ export function fetchHourlyWeather(latitude: number | string, longitude: number 
     .then((data) => data.splice(1, 6));
   return hourlyWeather;
 }
+
+// For LocationInput
+export function fetchCities(inputValue: any, setSearch: (arg: any) => void) {
+  axios.get(`${openweathermap}geo/1.0/direct?q=${inputValue}&limit=5&appid=${openweathermapKey}`).then(({ data }) => {
+    const citiesArray = data.map(({ name, lat, lon, country }: any) => ({
+      name,
+      latitude: lat,
+      longitude: lon,
+      country,
+    }));
+    setSearch(citiesArray);
+  });
+}

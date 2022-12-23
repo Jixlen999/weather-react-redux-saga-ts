@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import paths from '@src/constants/apiPaths';
-import { RootState } from '@src/store/reducers/rootReducer';
+import { locationAndCurWeather } from '@src/store/selectors';
 import { getCurrentWeather } from '@src/store/actions/weatherActions';
+import formatTemperature from '@src/utils/formatTemperature';
 import ForecastService from '../ForecastService';
 import ForecastServiceSwitcher from '../ForecastServiceSwitcher';
 
@@ -12,12 +13,11 @@ import { Wrapper, WeatherNow, FutureWeatherWrapper, Day, Temp, Icon, TempWrapper
 function Forecast() {
   const dispatch = useDispatch();
   const { meteosource } = paths;
-  const { location, curWeather } = useSelector((store: RootState) => ({
-    location: store.location,
-    curWeather: store.weather.currentWeather,
-  }));
+  const { location, curWeather } = useSelector(locationAndCurWeather);
   const { city } = location;
   const { icon, temperature } = curWeather;
+
+  const memoizedTemperature = useMemo(() => formatTemperature(temperature!), [temperature]);
 
   useEffect(() => {
     if (city) {
@@ -31,7 +31,7 @@ function Forecast() {
         <Icon src={icon ? `${meteosource}static/img/ico/weather/${icon}.svg` : ''} alt="weather icon" />
         <TempWrapper>
           <Day>Today</Day>
-          <Temp>{Math.round(Number(temperature))}°</Temp>
+          <Temp>{memoizedTemperature}°</Temp>
         </TempWrapper>
       </WeatherNow>
       <FutureWeatherWrapper>

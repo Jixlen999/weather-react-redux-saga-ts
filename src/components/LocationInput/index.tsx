@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 import debounce from 'lodash.debounce';
 
-import apiKeys from '@src/constants/apiKeys';
-import paths from '@src/constants/apiPaths';
+import { fetchCities } from '@src/api';
 import { getCurrentLocation, getPlaceId, getInputLocation } from '@store/actions/locationActions';
 import { locationSelector } from '@src/store/selectors';
 import SearchElement from '../SearchElement';
@@ -13,8 +11,6 @@ import { Input, SubmitBtn, Wrapper, SearchWrapper, SearchVariants } from './styl
 
 function LocationInput() {
   const dispatch = useDispatch();
-  const { openweathermap } = paths;
-  const { openweathermapKey } = apiKeys;
   const { city, country } = useSelector(locationSelector);
   const [curCity, setCurCity] = useState<string>('');
   const [search, setSearch] = useState<any[]>([]);
@@ -29,22 +25,11 @@ function LocationInput() {
     }
   }, [city, country, dispatch]);
 
-  const fetchCities = (inputValue: any) => {
-    axios.get(`${openweathermap}geo/1.0/direct?q=${inputValue}&limit=5&appid=${openweathermapKey}`).then(({ data }) => {
-      const citiesArray = data.map(({ name, lat, lon, country }: any) => ({
-        name,
-        latitude: lat,
-        longitude: lon,
-        country,
-      }));
-      setSearch(citiesArray);
-    });
-  };
   const debouncedFetch = useCallback(debounce(fetchCities, 300), []);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurCity(e.target.value);
-    debouncedFetch(e.target.value);
+    debouncedFetch(e.target.value, setSearch);
   };
 
   const clickHandler = () => {
