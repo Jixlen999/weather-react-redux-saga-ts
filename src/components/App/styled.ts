@@ -4,7 +4,7 @@ import chooseBgImage from '@utils/chooseImage';
 import { IAppWrapper } from '@src/types';
 
 const AppWrapper = styled.div<IAppWrapper>`
-  width: ${({ theme }) => theme.width[100]}%;
+  width: ${({ theme }) => theme.width[100]}vw;
   height: ${({ theme }) => theme.height[100]}vh;
   display: flex;
   align-items: center;
