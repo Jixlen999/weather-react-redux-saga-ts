@@ -1,5 +1,5 @@
 import { IEventsState } from '@src/types';
-import { SET_EVENTS, CLEAR_EVENTS } from '../actions/eventsActions';
+import { SET_EVENTS, CLEAR_EVENTS } from '@store/actions/eventsActions';
 
 const InitialState: IEventsState = {
   events: [],

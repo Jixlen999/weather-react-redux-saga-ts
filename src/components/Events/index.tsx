@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { eventsSelector } from '@src/store/selectors';
-import EventItem from '../EventItem';
+import { eventsSelector } from '@store/selectors';
+import EventItem from '@components/EventItem';
 
 import Wrapper from './styled';
 

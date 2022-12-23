@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import devices from '@src/constants/devices';
+import devices from '@constants/devices';
 
 const Wrapper = styled.div`
   display: flex;

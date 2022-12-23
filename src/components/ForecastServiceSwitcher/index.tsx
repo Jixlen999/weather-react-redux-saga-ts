@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { setService } from '@store/actions/serviceSwitcherActions';
-import serviceSwitchers from '@src/constants/serviceSwitchers';
+import serviceSwitchers from '@constants/serviceSwitchers';
 
 import { ServiceBtn, Wrapper } from './styled';
 

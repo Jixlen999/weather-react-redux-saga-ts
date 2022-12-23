@@ -1,5 +1,5 @@
 import { ILocationAction, IPlaceIdAction, ILocationState } from '@src/types';
-import { GET_LOCATION_SUCCESS, SET_PLACE_ID } from '../actions/locationActions';
+import { GET_LOCATION_SUCCESS, SET_PLACE_ID } from '@store/actions/locationActions';
 
 const initialState: ILocationState = {
   city: 'London',

@@ -5,10 +5,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-import { eventsSelector } from '@src/store/selectors';
-import googleButtons from '@src/constants/googleButtons';
-import config from '@src/constants/googleConfig';
-import { storeEvents, clearEvents } from '@src/store/actions/eventsActions';
+import { eventsSelector } from '@store/selectors';
+import googleButtons from '@constants/googleButtons';
+import config from '@constants/googleConfig';
+import { storeEvents, clearEvents } from '@store/actions/eventsActions';
 
 import { Wrapper, ButtonWrapper, Menu } from './styled';
 

@@ -1,4 +1,4 @@
-import { RootState } from './reducers/rootReducer';
+import { RootState } from '@store/reducers/rootReducer';
 
 export const weatherSummarySelector = (store: RootState) => store.weather.currentWeather.summary;
 export const locationSelector = (store: RootState) => store.location;

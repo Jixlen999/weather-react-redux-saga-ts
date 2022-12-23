@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { weatherSummarySelector } from '@src/store/selectors';
-import Forecast from '../Forecast';
-import Events from '../Events';
-import DateAndLocationWrapper from '../DateAndLocationWrapper';
+import { weatherSummarySelector } from '@store/selectors';
+import Forecast from '@components/Forecast';
+import Events from '@components/Events';
+import DateAndLocationWrapper from '@components/DateAndLocationWrapper';
 
 import Wrapper from './styled';
 

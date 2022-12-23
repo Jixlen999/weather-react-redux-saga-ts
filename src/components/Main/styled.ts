@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import chooseBgImage from '@src/utils/chooseImage';
-import devices from '@src/constants/devices';
+import chooseBgImage from '@utils/chooseImage';
+import devices from '@constants/devices';
 import { IMainWrapper } from '@src/types';
 
 const Wrapper = styled.div<IMainWrapper>`

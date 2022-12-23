@@ -1,10 +1,9 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { weatherSelector } from '@store/selectors';
 import paths from '@constants/apiPaths';
-import { weatherSelector } from '@src/store/selectors';
-import WeatherItem from '../WeatherItem';
+import WeatherItem from '@components/WeatherItem';
 
 function DailyForecast() {
   const { dailyWeather } = useSelector(weatherSelector);

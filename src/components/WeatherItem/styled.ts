@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import devices from '@src/constants/devices';
+import devices from '@constants/devices';
 
 export const Item = styled.div`
   font-size: ${({ theme }) => theme.fontSize[2]}px;

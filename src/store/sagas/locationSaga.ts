@@ -2,7 +2,12 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { fetchLocationByIP, fetchLocationByName, fetchPlaceID } from '@src/api';
 import { ILocation } from '@src/types';
-import { GET_CURRENT_LOCATION, setPlaceId, GET_INPUT_LOCATION, getLocationSuccess } from '../actions/locationActions';
+import {
+  GET_CURRENT_LOCATION,
+  setPlaceId,
+  GET_INPUT_LOCATION,
+  getLocationSuccess,
+} from '@store/actions/locationActions';
 
 function* locationWorkerById() {
   const location: ILocation = yield call(fetchLocationByIP);

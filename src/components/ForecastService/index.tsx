@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { serviceSelector } from '@src/store/selectors';
-import HourlyForecast from '../HourlyForecast';
-import DailyForecast from '../DailyForecast';
+import { serviceSelector } from '@store/selectors';
+import HourlyForecast from '@components/HourlyForecast';
+import DailyForecast from '@components/DailyForecast';
 
 import Wrapper from './styled';
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
+import { weatherSummarySelector } from '@store/selectors';
+import theme from '@src/theme';
 import LocationInput from '@components/LocationInput';
 import Main from '@components/Main';
-import { weatherSummarySelector } from '@src/store/selectors';
-import theme from '@src/theme';
-import ErrorBoundary from '../ErrorBoundary';
-import LoginWrapper from '../LoginWrapper';
+import ErrorBoundary from '@components/ErrorBoundary';
+import LoginWrapper from '@components/LoginWrapper';
 
 import AppWrapper from './styled';
 

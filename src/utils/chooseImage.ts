@@ -1,4 +1,4 @@
-import WeatherImages from '@src/constants/weatherImages';
+import WeatherImages from '@constants/weatherImages';
 
 export const chooseImage = (weatherSummary: string) => {
   const summary = weatherSummary.toLowerCase();

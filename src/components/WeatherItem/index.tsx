@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
 import { IWeatherItemProps } from '@src/types';
-import formatTemperature from '@src/utils/formatTemperature';
+import formatTemperature from '@utils/formatTemperature';
 
 import { Icon, Item, Temperature, WeekDayOrTime } from './styled';
 

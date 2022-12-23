@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { ILoginWrapper } from '@src/types';
-import devices from '@src/constants/devices';
+import devices from '@constants/devices';
 
 interface IButtonWrapper {
   isLoggedIn: boolean;

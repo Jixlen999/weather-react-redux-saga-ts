@@ -1,5 +1,5 @@
 import { IServiceAction, IServiceState, Service } from '@src/types';
-import { SET_SERVICE } from '../actions/serviceSwitcherActions';
+import { SET_SERVICE } from '@store/actions/serviceSwitcherActions';
 
 const initialState: IServiceState = {
   service: 'daily',

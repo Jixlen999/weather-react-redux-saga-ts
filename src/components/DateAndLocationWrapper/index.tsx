@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { locationSelector } from '@src/store/selectors';
-import CurrentDate from '../CurrentDate';
+import { locationSelector } from '@store/selectors';
+import CurrentDate from '@components/CurrentDate';
 
 import { Country, DateAndCityLayout, Location, City } from './styled';
 

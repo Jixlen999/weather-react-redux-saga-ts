@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import devices from '@src/constants/devices';
+import devices from '@constants/devices';
 
 export const Wrapper = styled.div`
   width: ${({ theme }) => theme.width[0]}%;

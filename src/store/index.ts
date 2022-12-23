@@ -3,8 +3,8 @@ import createSagaMiddleware from 'redux-saga';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 
-import rootReducer from './reducers/rootReducer';
-import rootSaga from './sagas/rootSaga';
+import rootReducer from '@store/reducers/rootReducer';
+import rootSaga from '@store/sagas/rootSaga';
 
 const persistConfig = {
   key: 'weather',

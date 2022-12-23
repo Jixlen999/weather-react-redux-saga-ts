@@ -1,5 +1,5 @@
 import { IWeatherAction, IWeatherState } from '@src/types';
-import { SET_CURRENT_WEATHER, SET_DAILY_WEATHER, SET_HOURLY_WEATHER } from '../actions/weatherActions';
+import { SET_CURRENT_WEATHER, SET_DAILY_WEATHER, SET_HOURLY_WEATHER } from '@store/actions/weatherActions';
 
 const initialState: IWeatherState = {
   currentWeather: {

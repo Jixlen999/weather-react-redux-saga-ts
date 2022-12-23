@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import paths from '@src/constants/apiPaths';
-import { locationAndCurWeather } from '@src/store/selectors';
-import { getCurrentWeather } from '@src/store/actions/weatherActions';
-import formatTemperature from '@src/utils/formatTemperature';
-import ForecastService from '../ForecastService';
-import ForecastServiceSwitcher from '../ForecastServiceSwitcher';
+import paths from '@constants/apiPaths';
+import { locationAndCurWeather } from '@store/selectors';
+import { getCurrentWeather } from '@store/actions/weatherActions';
+import formatTemperature from '@utils/formatTemperature';
+import ForecastService from '@components/ForecastService';
+import ForecastServiceSwitcher from '@components/ForecastServiceSwitcher';
 
 import { Wrapper, WeatherNow, FutureWeatherWrapper, Day, Temp, Icon, TempWrapper, Switchers } from './styled';
 

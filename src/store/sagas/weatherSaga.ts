@@ -2,8 +2,13 @@ import { call, select, put, takeEvery } from 'redux-saga/effects';
 
 import { fetchCurWeather, fetchDailyWeather, fetchHourlyWeather } from '@src/api';
 import { ICurrentWeather } from '@src/types';
-import { GET_CURRENT_WEATHER, setCurrentWeather, setDailyWeather, setHourlyWeather } from '../actions/weatherActions';
-import { locationSelector } from '../selectors';
+import {
+  GET_CURRENT_WEATHER,
+  setCurrentWeather,
+  setDailyWeather,
+  setHourlyWeather,
+} from '@store/actions/weatherActions';
+import { locationSelector } from '@store/selectors';
 
 function* weatherWorker() {
   const { placeId, latitude, longitude } = yield select(locationSelector);

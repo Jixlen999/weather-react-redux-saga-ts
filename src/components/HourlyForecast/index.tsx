@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import paths from '@src/constants/apiPaths';
-import formatTime from '@src/utils/formatTime';
-import { weatherSelector } from '@src/store/selectors';
-import WeatherItem from '../WeatherItem';
+import paths from '@constants/apiPaths';
+import formatTime from '@utils/formatTime';
+import { weatherSelector } from '@store/selectors';
+import WeatherItem from '@components/WeatherItem';
 
 function HourlyForecast() {
   const { hourlyWeather } = useSelector(weatherSelector);

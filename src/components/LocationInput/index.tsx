@@ -4,8 +4,8 @@ import debounce from 'lodash.debounce';
 
 import { fetchCities } from '@src/api';
 import { getCurrentLocation, getPlaceId, getInputLocation } from '@store/actions/locationActions';
-import { locationSelector } from '@src/store/selectors';
-import isNotPersisted from '@src/utils/checkPersist';
+import { locationSelector } from '@store/selectors';
+import isNotPersisted from '@utils/checkPersist';
 import SearchElement from '@components/SearchElement';
 
 import { Input, SubmitBtn, Wrapper, SearchWrapper, SearchVariants } from './styled';

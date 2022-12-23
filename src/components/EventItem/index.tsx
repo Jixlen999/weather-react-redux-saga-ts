@@ -1,6 +1,6 @@
 import React from 'react';
 
-import formatTime from '@src/utils/formatTime';
+import formatTime from '@utils/formatTime';
 
 import { Item, Summary, Time } from './styled';
 

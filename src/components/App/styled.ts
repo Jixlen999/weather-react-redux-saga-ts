@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import chooseBgImage from '@src/utils/chooseImage';
+import chooseBgImage from '@utils/chooseImage';
 
 interface IAppWrapper {
   weatherSummary: string;
