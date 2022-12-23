@@ -1,31 +1,30 @@
 import WeatherImages from '@src/constants/weatherImages';
 
 export const chooseImage = (weatherSummary: string) => {
-  let bgImage = WeatherImages.sun.bg;
-  let mainImage = WeatherImages.sun.main;
-  if (weatherSummary.toLowerCase().includes('rain')) {
-    bgImage = WeatherImages.rain.bg;
-    mainImage = WeatherImages.rain.main;
+  const summary = weatherSummary.toLowerCase();
+  const { sun, rain, overcast, snow } = WeatherImages;
+  let bgImage = sun.bg;
+  let mainImage = sun.main;
+
+  if (summary.includes('rain')) {
+    bgImage = rain.bg;
+    mainImage = rain.main;
+  }
+  if (summary.includes('cloud') || summary.includes('fog') || summary.includes('overcast')) {
+    bgImage = overcast.bg;
+    mainImage = overcast.main;
+  }
+  if (summary.includes('sun') || summary.includes('clean')) {
+    bgImage = sun.bg;
+    mainImage = sun.main;
   }
   if (
-    weatherSummary.toLowerCase().includes('cloud') ||
-    weatherSummary.toLowerCase().includes('fog') ||
-    weatherSummary.toLowerCase().includes('overcast')
+    summary.includes('snow') ||
+    summary.includes('ice') ||
+    summary.includes('freez') // The mistake is made on purpose so words like 'freeze/freezing' etc. can be understood
   ) {
-    bgImage = WeatherImages.overcast.bg;
-    mainImage = WeatherImages.overcast.main;
-  }
-  if (weatherSummary.toLowerCase().includes('sun') || weatherSummary.toLowerCase().includes('clean')) {
-    bgImage = WeatherImages.sun.bg;
-    mainImage = WeatherImages.sun.main;
-  }
-  if (
-    weatherSummary.toLowerCase().includes('snow') ||
-    weatherSummary.toLowerCase().includes('ice') ||
-    weatherSummary.toLowerCase().includes('freez') // The mistake is made on purpose so words like 'freeze/freezing' etc. can be understood
-  ) {
-    bgImage = WeatherImages.snow.bg;
-    mainImage = WeatherImages.snow.main;
+    bgImage = snow.bg;
+    mainImage = snow.main;
   }
 
   return { bgImage, mainImage };
