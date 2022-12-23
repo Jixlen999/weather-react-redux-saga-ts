@@ -6,7 +6,7 @@ export const Input = styled.input`
   outline: none;
   display: inline-block;
   background: ${({ theme }) => theme.colors.transparentDark};
-  width: auto;
+  width: ${({ theme }) => theme.width[200]}px;
   border: none;
   border-bottom: ${({ theme }) => theme.border[2]}px solid ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius[4]}px;
@@ -23,6 +23,9 @@ export const SearchVariants = styled.div`
   position: absolute;
   width: ${({ theme }) => theme.width[200]}px;
   z-index: ${({ theme }) => theme.zIndex[100]};
+  @media ${devices.tablet} {
+    width: ${({ theme }) => theme.width[150]}px;
+  }
 `;
 
 export const SearchWrapper = styled.div``;

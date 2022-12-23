@@ -2,11 +2,11 @@ import React from 'react';
 
 import SearchField from './styled';
 
-function SearchElement({ element, setCurCity }: any) {
+function SearchElement({ element, setCurrentCity }: any) {
   const { name, country } = element;
 
   const handleClick = () => {
-    setCurCity(name);
+    setCurrentCity(name);
   };
   return (
     <SearchField onClick={handleClick}>

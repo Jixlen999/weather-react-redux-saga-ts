@@ -13,7 +13,7 @@ import { Input, SubmitBtn, Wrapper, SearchWrapper, SearchVariants } from './styl
 function LocationInput() {
   const dispatch = useDispatch();
   const { city, country } = useSelector(locationSelector);
-  const [curCity, setCurCity] = useState('');
+  const [currentCity, setCurrentCity] = useState('');
   const [search, setSearch] = useState<any[]>([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function LocationInput() {
       navigator.geolocation.getCurrentPosition(() => {
         dispatch(getCurrentLocation());
         dispatch(getPlaceId());
-        setCurCity('');
+        setCurrentCity('');
       });
     }
   }, [city, country]);
@@ -29,12 +29,12 @@ function LocationInput() {
   const debouncedFetch = useCallback(debounce(fetchCities, 300), []);
 
   const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
-    setCurCity(value);
+    setCurrentCity(value);
     debouncedFetch(value, setSearch);
   };
 
   const handleClick = () => {
-    dispatch(getInputLocation(curCity));
+    dispatch(getInputLocation(currentCity));
     setSearch([]);
   };
 
@@ -55,7 +55,7 @@ function LocationInput() {
       <SearchWrapper>
         <Input
           placeholder="Enter the city"
-          value={curCity}
+          value={currentCity}
           onChange={handleChange}
           onKeyDown={handleEnter}
           onBlur={handleBlur}
@@ -64,7 +64,7 @@ function LocationInput() {
         {search.length > 0 && (
           <SearchVariants>
             {search.map((el, id) => (
-              <SearchElement key={el.latitude + id} element={el} setCurCity={setCurCity} />
+              <SearchElement key={el.latitude + id} element={el} setCurrentCity={setCurrentCity} />
             ))}
           </SearchVariants>
         )}
