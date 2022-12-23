@@ -9,6 +9,9 @@ export const Item = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: ${({ theme }) => theme.gap[2]}px;
+  @media ${devices.largePhone} {
+    flex-direction: row;
+  }
 `;
 
 export const Icon = styled.img`

@@ -15,6 +15,7 @@ function* locationWorkerById() {
 
 function* locationWorkerByName({ payload }: { payload: string }) {
   const location: ILocation = yield call(fetchLocationByName, payload);
+
   if (location) {
     const placeId: string = yield call(fetchPlaceID, location.city);
     yield put(setPlaceId(placeId));

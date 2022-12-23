@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   gap: ${({ theme }) => theme.gap[1]}px;
   justify-content: space-between;
   @media ${devices.largePhone} {
-    flex-direction: row;
+    flex-direction: column;
   }
 `;
 

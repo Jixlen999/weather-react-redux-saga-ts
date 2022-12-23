@@ -21,9 +21,7 @@ export const Wrapper = styled.div`
     padding: ${({ theme }) => theme.padding[4]}px;
   }
   @media ${devices.largePhone} {
-    height: auto;
-    flex-direction: row;
-    overflow-y: none;
+    overflow-y: scroll;
     padding-top: ${({ theme }) => theme.padding[5]}px;
     padding-bottom: ${({ theme }) => theme.padding[3]}px;
   }
@@ -42,9 +40,6 @@ export const WeatherNow = styled.div`
     width: auto;
     justify-content: space-evenly;
     border-bottom: ${({ theme }) => theme.border[0]}px solid white;
-  }
-  @media ${devices.largePhone} {
-    border-bottom: none;
   }
 `;
 export const FutureWeatherWrapper = styled.div`
