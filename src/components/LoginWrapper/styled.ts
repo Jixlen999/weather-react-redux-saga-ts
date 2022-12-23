@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
-import { ILoginWrapper } from '@src/types';
+import { IButtonWrapper, ILoginWrapper } from '@src/types';
 import devices from '@constants/devices';
-
-interface IButtonWrapper {
-  isLoggedIn: boolean;
-  text: string;
-}
+import displayButton from '@utils/displayButton';
 
 export const Wrapper = styled.div<ILoginWrapper>`
   position: absolute;
@@ -27,7 +23,7 @@ export const Wrapper = styled.div<ILoginWrapper>`
   }
   @media ${devices.tablet} {
     flex-direction: column;
-    height: ${({ active }: any) => (!active ? '45px' : 'auto')};
+    height: ${({ active }) => (!active ? '45px' : 'auto')};
     width: auto;
     top: ${({ theme }) => theme.top[10]}px;
     padding: ${({ theme }) => theme.padding[10]}px;
@@ -43,29 +39,13 @@ export const ButtonWrapper = styled.div<IButtonWrapper>`
   text-align: center;
   cursor: pointer;
   transition: all ${({ theme }) => theme.transition['0.2']}s linear;
-  display: ${({ text, isLoggedIn }) => {
-    if (text === 'Sign Out') {
-      if (isLoggedIn) {
-        return 'block';
-      }
-      return 'none';
-    }
-    if (text === 'Sign In') {
-      if (!isLoggedIn) {
-        return 'block';
-      }
-      return 'none';
-    }
-    return 'block';
-  }};
-
+  display: ${displayButton};
   &:hover {
     transform: scale(${({ theme }) => theme.scale['1.1']});
   }
   svg {
     font-size: ${({ theme }) => theme.fontSize[30]}px;
   }
-
   @media ${devices.laptop} {
     width: auto;
     p {

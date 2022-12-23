@@ -10,7 +10,7 @@ import ForecastServiceSwitcher from '@components/ForecastServiceSwitcher';
 
 import { Wrapper, WeatherNow, FutureWeatherWrapper, Day, Temp, Icon, TempWrapper, Switchers } from './styled';
 
-function Forecast() {
+const Forecast = () => {
   const dispatch = useDispatch();
   const { meteosource } = paths;
   const { location, curWeather } = useSelector(locationAndCurWeather);
@@ -42,6 +42,6 @@ function Forecast() {
       </Switchers>
     </Wrapper>
   );
-}
+};
 
 export default Forecast;

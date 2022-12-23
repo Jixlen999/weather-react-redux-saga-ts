@@ -7,8 +7,8 @@ const initialState: IWeatherState = {
     temperature: null,
     summary: '',
   },
-  dailyWeather: null,
-  hourlyWeather: null,
+  dailyWeather: [],
+  hourlyWeather: [],
 };
 
 const weatherReducer = (

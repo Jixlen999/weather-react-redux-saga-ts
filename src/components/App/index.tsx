@@ -11,7 +11,7 @@ import LoginWrapper from '@components/LoginWrapper';
 
 import AppWrapper from './styled';
 
-function App() {
+const App = () => {
   const weatherSummary = useSelector(weatherSummarySelector);
 
   return (
@@ -25,6 +25,6 @@ function App() {
       </ThemeProvider>
     </ErrorBoundary>
   );
-}
+};
 
 export default App;

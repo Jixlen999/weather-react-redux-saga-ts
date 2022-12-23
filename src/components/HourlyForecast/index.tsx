@@ -7,7 +7,7 @@ import { weatherSelector } from '@store/selectors';
 import WeatherItem from '@components/WeatherItem';
 import { IHourlyWeather } from '@src/types';
 
-function HourlyForecast() {
+const HourlyForecast = () => {
   const { hourlyWeather } = useSelector(weatherSelector);
   const { openweathermapIcons } = paths;
 
@@ -28,6 +28,6 @@ function HourlyForecast() {
         })}
     </>
   );
-}
+};
 
 export default HourlyForecast;

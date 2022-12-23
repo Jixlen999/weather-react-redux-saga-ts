@@ -7,7 +7,7 @@ import { IEvent } from '@src/types';
 
 import Wrapper from './styled';
 
-function Events() {
+const Events = () => {
   const events = useSelector(eventsSelector);
 
   if (events.length > 0) {
@@ -20,6 +20,6 @@ function Events() {
     );
   }
   return <div />;
-}
+};
 
 export default Events;

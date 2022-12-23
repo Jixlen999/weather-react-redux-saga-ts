@@ -13,11 +13,12 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "linebreak-style": ["error", "windows"],
-    "@typescript-eslint/default-param-last": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "react/no-array-index-key": "off",
-    "@typescript-eslint/naming-convention": "off",
-    "react/jsx-no-useless-fragment": "off"
+    "@typescript-eslint/default-param-last": "off", // Disabled to make it possible to initialize state with InitialState in reducers
+    "react-hooks/exhaustive-deps": "off", // Disabled so it doesn't ask for "dispatch" in useEffect deps"
+    "react/no-array-index-key": "off", // Disabled because in search list array mapped elements don't have their ID's
+    "@typescript-eslint/naming-convention": "off", // Disabled because there is a variable with "_" coming from API
+    "react/jsx-no-useless-fragment": "off", // Disabled for DailyForecast and HourlyForecast so the ForecastService looks cleaner
+    "react/function-component-definition": "off" //Disabled to make it possible to use arrow functions for creating functional components
   },
   "settings": {
     "import/resolver": {

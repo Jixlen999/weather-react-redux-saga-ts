@@ -8,43 +8,47 @@ const { ipgeolocation, openweathermap, meteosource } = paths;
 const { openweathermapKey, meteosourceKey, ipgeolocationKey } = apiKeys;
 
 // For location saga
-export async function fetchLocationByIP() {
-  const location = await axios
-    .get(`${ipgeolocation}${ipgeolocationKey}`)
-    .then(({ data }) => data)
-    .then(({ city, country, latitude, longitude }) => ({ city, country, latitude, longitude }));
+export const fetchLocationByIP = async () => {
+  const location = await axios.get(`${ipgeolocation}${ipgeolocationKey}`).then(({ data }) => {
+    const { city, country, latitude, longitude } = data;
+    return { city, country, latitude, longitude };
+  });
   return location;
-}
-export async function fetchLocationByName(cityName: string) {
+};
+export const fetchLocationByName = async (cityName: string) => {
   const location = await axios
     .get(`${openweathermap}geo/1.0/direct?q=${cityName}&limit=5&appid=${openweathermapKey}`)
-    .then(({ data }) => data[0])
-    .then(({ name, country, lat, lon }) => ({ city: name, country, latitude: lat, longitude: lon }))
+    .then(({ data }) => {
+      const { name, country, lat, lon } = data[0];
+      return { city: name, country, latitude: lat, longitude: lon };
+    })
     .catch(() => null);
   return location;
-}
+};
 
 // Fetching placeId for meteosource.com
-export async function fetchPlaceID(curLocation: string): Promise<string> {
+export const fetchPlaceID = async (curLocation: string): Promise<string> => {
   const placeId = await axios
     .get(`${meteosource}api/v1/free/find_places_prefix?text=${curLocation}&language=en&key=${meteosourceKey}`)
     .then(({ data }) => data[0].place_id);
   return placeId;
-}
+};
 
 // For weather saga
-export function fetchCurWeather(placeId: string) {
-  const curWeather = axios
+export const fetchCurWeather = async (placeId: string) => {
+  const currentWeather = await axios
     .get(
       `${meteosource}api/v1/free/point?place_id=${placeId}&sections=current&language=en&units=auto&key=${meteosourceKey}`,
     )
-    .then(({ data }) => data.current)
-    .then(({ icon_num, temperature, summary }) => ({ icon: icon_num, temperature, summary }));
-  return curWeather;
-}
+    .then(({ data }) => {
+      const { icon_num, temperature, summary } = data.current;
+      return { icon: icon_num, temperature, summary };
+    });
+  return currentWeather;
+};
 
-export function fetchDailyWeather(placeId: string): Promise<IDailyWeather> {
-  const dailyWeather = axios
+export const fetchDailyWeather = async (placeId: string): Promise<IDailyWeather> => {
+  const dailyWeather = await axios
     .get(
       `${meteosource}api/v1/free/point?place_id=${placeId}&sections=daily&language=en&units=auto&key=${meteosourceKey}`,
     )
@@ -59,10 +63,13 @@ export function fetchDailyWeather(placeId: string): Promise<IDailyWeather> {
       }),
     );
   return dailyWeather;
-}
+};
 
-export function fetchHourlyWeather(latitude: number | string, longitude: number | string): Promise<IHourlyWeather[]> {
-  const hourlyWeather = axios
+export const fetchHourlyWeather = async (
+  latitude: number | string,
+  longitude: number | string,
+): Promise<IHourlyWeather[]> => {
+  const hourlyWeather = await axios
     .get(`${openweathermap}data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${openweathermapKey}`)
     .then(({ data }) => data.list)
     .then((list) => list.splice(1, 6))
@@ -79,11 +86,11 @@ export function fetchHourlyWeather(latitude: number | string, longitude: number 
       }),
     );
   return hourlyWeather;
-}
+};
 
 // For LocationInput
 
-export function fetchCities(inputValue: string, setSearch: (arg: ICities[]) => void) {
+export const fetchCities = (inputValue: string, setSearch: (arg: ICities[]) => void) => {
   axios.get(`${openweathermap}geo/1.0/direct?q=${inputValue}&limit=5&appid=${openweathermapKey}`).then(({ data }) => {
     const citiesArray = data.map(({ name, lat, lon, country }: ICities) => ({
       name,
@@ -93,4 +100,4 @@ export function fetchCities(inputValue: string, setSearch: (arg: ICities[]) => v
     }));
     setSearch(citiesArray);
   });
-}
+};

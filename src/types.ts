@@ -69,16 +69,16 @@ export interface ICurrentWeather {
 }
 export interface IWeatherState {
   currentWeather: ICurrentWeather;
-  dailyWeather?: any;
-  hourlyWeather?: any;
+  dailyWeather: IDailyWeather[];
+  hourlyWeather: IHourlyWeather[];
 }
 
 export interface ICurrentWeatherAction {
   type: 'SET_CURRENT_WEATHER';
   payload: {
-    icon: null;
-    temperature: null;
-    summary: '';
+    icon: string | null;
+    temperature: number | null;
+    summary: string;
   };
 }
 
@@ -113,7 +113,7 @@ export interface IDailyWeatherAction {
 
 export interface IHourlyWeatherAction {
   type: 'SET_HOURLY_WEATHER';
-  payload: any[];
+  payload: IHourlyWeather[];
 }
 
 export interface IWeatherItemProps {
@@ -142,4 +142,18 @@ export interface IHoursItem {
   dt_txt: string;
   main: { temp: number };
   weather: { 0: { icon: string } };
+}
+
+export interface IButtonWrapper {
+  isLoggedIn: boolean;
+  text: string;
+}
+
+export interface IAppWrapper {
+  weatherSummary: string;
+}
+
+export interface ISearchElement {
+  element: ICities;
+  setCurrentCity: React.Dispatch<React.SetStateAction<string>>;
 }

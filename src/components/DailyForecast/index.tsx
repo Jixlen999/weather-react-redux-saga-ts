@@ -6,7 +6,7 @@ import paths from '@constants/apiPaths';
 import WeatherItem from '@components/WeatherItem';
 import { IDailyWeather } from '@src/types';
 
-function DailyForecast() {
+const DailyForecast = () => {
   const { dailyWeather } = useSelector(weatherSelector);
   const { meteosource } = paths;
 
@@ -26,6 +26,6 @@ function DailyForecast() {
         })}
     </>
   );
-}
+};
 
 export default DailyForecast;

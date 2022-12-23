@@ -7,7 +7,7 @@ import DailyForecast from '@components/DailyForecast';
 
 import Wrapper from './styled';
 
-function ForecastService() {
+const ForecastService = () => {
   const service = useSelector(serviceSelector);
 
   if (service === 'hourly') {
@@ -22,6 +22,6 @@ function ForecastService() {
       <DailyForecast />
     </Wrapper>
   );
-}
+};
 
 export default ForecastService;

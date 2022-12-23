@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import chooseBgImage from '@utils/chooseImage';
 
-interface IAppWrapper {
-  weatherSummary: string;
-}
+import chooseBgImage from '@utils/chooseImage';
+import { IAppWrapper } from '@src/types';
 
 const AppWrapper = styled.div<IAppWrapper>`
   width: ${({ theme }) => theme.width[100]}%;

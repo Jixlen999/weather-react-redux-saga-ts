@@ -23,7 +23,6 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
         </div>
       );
     }
-
     return children;
   }
 }

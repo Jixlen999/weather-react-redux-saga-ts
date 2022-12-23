@@ -6,7 +6,7 @@ import CurrentDate from '@components/CurrentDate';
 
 import { Country, DateAndCityLayout, Location, City } from './styled';
 
-function DateAndLocationWrapper() {
+const DateAndLocationWrapper = () => {
   const { city, country } = useSelector(locationSelector);
 
   return (
@@ -18,6 +18,6 @@ function DateAndLocationWrapper() {
       </Location>
     </DateAndCityLayout>
   );
-}
+};
 
 export default DateAndLocationWrapper;

@@ -5,8 +5,9 @@ import formatTemperature from '@utils/formatTemperature';
 
 import { Icon, Item, Temperature, WeekDayOrTime } from './styled';
 
-function WeatherItem({ temperature, time, iconSrc }: IWeatherItemProps) {
+const WeatherItem = ({ temperature, time, iconSrc }: IWeatherItemProps) => {
   const memoizedTemperature = useMemo(() => formatTemperature(temperature), [temperature]);
+
   return (
     <Item>
       <WeekDayOrTime data-cy="weekDayOrTime">{time}</WeekDayOrTime>
@@ -14,6 +15,6 @@ function WeatherItem({ temperature, time, iconSrc }: IWeatherItemProps) {
       <Temperature>{memoizedTemperature}°</Temperature>
     </Item>
   );
-}
+};
 
 export default WeatherItem;

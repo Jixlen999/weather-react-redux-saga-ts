@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { ISearchElement } from '@src/types';
+
 import SearchField from './styled';
 
-function SearchElement({ element, setCurrentCity }: any) {
+const SearchElement = ({ element, setCurrentCity }: ISearchElement) => {
   const { name, country } = element;
 
   const handleClick = () => {
@@ -13,6 +15,6 @@ function SearchElement({ element, setCurrentCity }: any) {
       {name}, {country}
     </SearchField>
   );
-}
+};
 
 export default SearchElement;

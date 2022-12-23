@@ -3,12 +3,17 @@ import Moment from 'react-moment';
 
 import { Wrapper, Day } from './styled';
 
-function CurrentDate() {
+const CurrentDate = () => {
   const [date, setDate] = useState('');
 
   useEffect(() => {
-    const now: Date = new Date();
-    setDate(now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
+    const now: string = new Date().toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    setDate(now);
   }, []);
 
   return (
@@ -17,6 +22,6 @@ function CurrentDate() {
       <Day>{date}</Day>
     </Wrapper>
   );
-}
+};
 
 export default CurrentDate;

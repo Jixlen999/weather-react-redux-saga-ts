@@ -13,7 +13,7 @@ import { storeEvents, clearEvents } from '@store/actions/eventsActions';
 
 import { Wrapper, ButtonWrapper, Menu } from './styled';
 
-function LoginWrapper() {
+const LoginWrapper = () => {
   const dispatch = useDispatch();
   const events = useSelector(eventsSelector);
   const [active, setActive] = useState(false);
@@ -90,6 +90,6 @@ function LoginWrapper() {
       />
     </Wrapper>
   );
-}
+};
 
 export default LoginWrapper;

@@ -8,7 +8,7 @@ import DateAndLocationWrapper from '@components/DateAndLocationWrapper';
 
 import Wrapper from './styled';
 
-function Main() {
+const Main = () => {
   const weatherSummary = useSelector(weatherSummarySelector);
 
   return (
@@ -18,6 +18,6 @@ function Main() {
       <Forecast />
     </Wrapper>
   );
-}
+};
 
 export default Main;

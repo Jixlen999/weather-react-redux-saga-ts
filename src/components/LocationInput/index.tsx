@@ -11,11 +11,11 @@ import SearchElement from '@components/SearchElement';
 
 import { Input, SubmitBtn, Wrapper, SearchWrapper, SearchVariants } from './styled';
 
-function LocationInput() {
+const LocationInput = () => {
   const dispatch = useDispatch();
   const { city, country } = useSelector(locationSelector);
   const [currentCity, setCurrentCity] = useState('');
-  const [search, setSearch] = useState<ICities[]>([]);
+  const [searchList, setSearchList] = useState<ICities[]>([]);
 
   useEffect(() => {
     if (isNotPersisted()) {
@@ -31,12 +31,12 @@ function LocationInput() {
 
   const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentCity(value);
-    debouncedFetch(value, setSearch);
+    debouncedFetch(value, setSearchList);
   };
 
   const handleClick = () => {
     dispatch(getInputLocation(currentCity));
-    setSearch([]);
+    setSearchList([]);
   };
 
   const handleEnter = ({ keyCode }: React.KeyboardEvent<HTMLInputElement>) => {
@@ -47,7 +47,7 @@ function LocationInput() {
 
   const handleBlur = () => {
     setTimeout(() => {
-      setSearch([]);
+      setSearchList([]);
     }, 300);
   };
 
@@ -62,10 +62,10 @@ function LocationInput() {
           onBlur={handleBlur}
           data-cy="cityInput"
         />
-        {search.length > 0 && (
+        {searchList.length > 0 && (
           <SearchVariants>
-            {search.map((el, id) => (
-              <SearchElement key={id} element={el} setCurrentCity={setCurrentCity} />
+            {searchList.map((searchItem, id) => (
+              <SearchElement key={id} element={searchItem} setCurrentCity={setCurrentCity} />
             ))}
           </SearchVariants>
         )}
@@ -76,6 +76,6 @@ function LocationInput() {
       </SubmitBtn>
     </Wrapper>
   );
-}
+};
 
 export default LocationInput;

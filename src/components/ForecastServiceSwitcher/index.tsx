@@ -6,7 +6,7 @@ import serviceSwitchers from '@constants/serviceSwitchers';
 
 import { ServiceBtn, Wrapper } from './styled';
 
-function ForecastServiceSwitcher() {
+const ForecastServiceSwitcher = () => {
   const dispatch = useDispatch();
   const [active, setActive] = useState(true);
 
@@ -33,6 +33,6 @@ function ForecastServiceSwitcher() {
       ))}
     </Wrapper>
   );
-}
+};
 
 export default ForecastServiceSwitcher;
