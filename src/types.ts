@@ -54,14 +54,26 @@ export interface IWeatherState {
   dailyWeather?: any;
   hourlyWeather?: any;
 }
-export interface IWeatherAction {
-  type: string;
-  currentWeather?: ICurrentWeather;
-  dailyWeather?: any;
-  hourlyWeather?: any;
+
+export interface ICurrentWeatherAction {
+  type: 'SET_CURRENT_WEATHER';
+  payload: {
+    icon: null;
+    temperature: null;
+    summary: '';
+  };
 }
 
-// Others
+export interface IDailyWeatherAction {
+  type: 'SET_DAILY_WEATHER';
+  payload: any[];
+}
+
+export interface IHourlyWeatherAction {
+  type: 'SET_HOURLY_WEATHER';
+  payload: any[];
+}
+
 export interface IWeatherItemProps {
   temperature: string | number;
   time: string;

@@ -6,15 +6,15 @@ export const SET_HOURLY_WEATHER = 'SET_HOURLY_WEATHER';
 export const getCurrentWeather = () => ({
   type: GET_CURRENT_WEATHER,
 });
-export const setCurrentWeather = (currentWeather: any) => ({
+export const setCurrentWeather = (payload: any) => ({
   type: SET_CURRENT_WEATHER,
-  currentWeather,
+  payload,
 });
-export const setDailyWeather = (dailyWeather: any) => ({
+export const setDailyWeather = (payload: any) => ({
   type: SET_DAILY_WEATHER,
-  dailyWeather,
+  payload,
 });
-export const setHourlyWeather = (hourlyWeather: any) => ({
+export const setHourlyWeather = (payload: any) => ({
   type: SET_HOURLY_WEATHER,
-  hourlyWeather,
+  payload,
 });

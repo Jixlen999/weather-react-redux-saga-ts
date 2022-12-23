@@ -1,4 +1,4 @@
-import { IWeatherAction, IWeatherState } from '@src/types';
+import { IWeatherState, ICurrentWeatherAction, IDailyWeatherAction, IHourlyWeatherAction } from '@src/types';
 import { SET_CURRENT_WEATHER, SET_DAILY_WEATHER, SET_HOURLY_WEATHER } from '@store/actions/weatherActions';
 
 const initialState: IWeatherState = {
@@ -11,16 +11,19 @@ const initialState: IWeatherState = {
   hourlyWeather: null,
 };
 
-const weatherReducer = (state: IWeatherState = initialState, action: IWeatherAction): IWeatherState => {
-  switch (action.type) {
+const weatherReducer = (
+  state: IWeatherState = initialState,
+  { type, payload }: ICurrentWeatherAction | IDailyWeatherAction | IHourlyWeatherAction,
+): IWeatherState => {
+  switch (type) {
     case SET_CURRENT_WEATHER: {
-      return { ...state, currentWeather: action.currentWeather! };
+      return { ...state, currentWeather: payload };
     }
     case SET_DAILY_WEATHER: {
-      return { ...state, dailyWeather: action.dailyWeather! };
+      return { ...state, dailyWeather: payload };
     }
     case SET_HOURLY_WEATHER: {
-      return { ...state, hourlyWeather: action.hourlyWeather! };
+      return { ...state, hourlyWeather: payload };
     }
     default:
       return state;
