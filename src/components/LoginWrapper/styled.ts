@@ -50,6 +50,12 @@ export const ButtonWrapper = styled.div<IButtonWrapper>`
       }
       return 'none';
     }
+    if (text === 'Sign In') {
+      if (!isLoggedIn) {
+        return 'block';
+      }
+      return 'none';
+    }
     return 'block';
   }};
 
